@@ -15,6 +15,8 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
 
     var spinner:UIActivityIndicatorView = UIActivityIndicatorView()
     
+    let mainSb = UIStoryboard(name: "Main", bundle: nil)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -52,9 +54,16 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     }
     
     @IBAction func openSignUpScreen(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let signUpVc = storyboard.instantiateViewController(withIdentifier: "SignUpViewController") as! SignUpViewController
+
+        let signUpVc = mainSb.instantiateViewController(withIdentifier: "SignUpViewController") as! SignUpViewController
         let navigationVc = UINavigationController(rootViewController: signUpVc)
+        present(navigationVc, animated: true, completion: nil)
+    }
+    
+    @IBAction func openSignInScreen(_ sender: UIButton) {
+
+        let signInVc = mainSb.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
+        let navigationVc = UINavigationController(rootViewController: signInVc)
         present(navigationVc, animated: true, completion: nil)
     }
     
