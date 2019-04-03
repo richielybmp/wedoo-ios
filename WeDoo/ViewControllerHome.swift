@@ -11,18 +11,22 @@ import Firebase
 
 class ViewControllerHome: UIViewController {
 
+    @IBOutlet weak var labelWelcome: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        let userMail = Auth.auth().currentUser?.email
+        labelWelcome.text = "Bem vindo, \(userMail ?? "< mail@mailo.com>")"
     }
 
     @IBAction func signOutClick(_ sender: UIButton) {
         let firebaseAuth = Auth.auth()
         do {
             try firebaseAuth.signOut()
-            print("Log out com sucesso!")
+//            print("Log out com sucesso!")
             dismiss(animated: true, completion: nil)
         } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
+//            print ("Error signing out: %@", signOutError)
         }
     }
 }
