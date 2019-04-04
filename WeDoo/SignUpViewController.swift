@@ -40,7 +40,7 @@ class SignUpViewController: UIViewController {
             if error == nil {
                 Auth.auth().signIn(withEmail: email!, password: senha!, completion: { (user, error) in
                     if error == nil {
-                        let homeVc = self.mainSb.instantiateViewController(withIdentifier: "HomeScreen") as! ViewControllerHome
+                        let homeVc = self.mainSb.instantiateViewController(withIdentifier: "TabHomeScreen") as! UITabBarController
                         self.present(homeVc, animated: true, completion: nil)                        
                     }
                     else {

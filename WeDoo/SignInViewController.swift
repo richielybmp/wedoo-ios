@@ -32,7 +32,7 @@ class SignInViewController: UIViewController {
         showSpinner(show: true)
         Auth.auth().signIn(withEmail: email!, password: senha!, completion: { (user, error) in
             if error == nil {
-                let homeVc = self.storyboard?.instantiateViewController(withIdentifier: "HomeScreen") as! ViewControllerHome
+                let homeVc = self.storyboard?.instantiateViewController(withIdentifier: "TabHomeScreen") as! UITabBarController
                 self.present(homeVc, animated: true, completion: nil)
             }
             else {
