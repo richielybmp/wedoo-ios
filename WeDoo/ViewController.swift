@@ -15,7 +15,7 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
 
     var spinner:UIActivityIndicatorView = UIActivityIndicatorView()
     
-    let mainSb = UIStoryboard(name: "Main", bundle: nil)
+    //let mainSb = UIStoryboard(name: "Main", bundle: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +32,7 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
         showSpinner(show:true)
         if let error = error {
-            print("Ocorreu um erro ao tentar autenticar -  Level 1")
+            showAlert("didSignInFor Failed", "OK", error: error)
             return
         }
         
@@ -42,11 +42,11 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         
         Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
             if let error = error {
-                print("Ocorreu um erro ao tentar autenticar - Level 2")
+                self.showAlert("SignIn with credential Failed", "OK", error: error)
                 self.showSpinner(show:false)
                 return
             }
-            print("Autenticação feita com sucesso!!! \(authResult?.user.displayName)")
+            //print("Autenticação feita com sucesso!!! \(authResult?.user.displayName)")
             //self.abrirHome()
             self.showSpinner(show:false)
             return
@@ -54,21 +54,20 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     }
     
     @IBAction func openSignUpScreen(_ sender: UIButton) {
-
-        let signUpVc = mainSb.instantiateViewController(withIdentifier: "SignUpViewController") as! SignUpViewController
+        let signUpVc = storyboard?.instantiateViewController(withIdentifier: "SignUpViewController") as! SignUpViewController
         let navigationVc = UINavigationController(rootViewController: signUpVc)
         present(navigationVc, animated: true, completion: nil)
+        //navigationVc.pushViewController(signUpVc, animated: true)
     }
     
     @IBAction func openSignInScreen(_ sender: UIButton) {
-
-        let signInVc = mainSb.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
+        let signInVc = storyboard?.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
         let navigationVc = UINavigationController(rootViewController: signInVc)
         present(navigationVc, animated: true, completion: nil)
+        //navigationVc.pushViewController(signInVc, animated: true)
     }
     
     private func checkIfUserIsSignedIn() {
-        
         Auth.auth().addStateDidChangeListener { (auth, user) in
             if user != nil {
                 // user is signed in
@@ -101,6 +100,11 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         self.performSegue(withIdentifier: "showHomeSegue", sender: self)
     }
     
+    private func showAlert(_ acTitle: String, _ aaTitle: String, error: Error){
+        let alert = UIAlertController(title: acTitle, message: error.localizedDescription, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: aaTitle, style: .default))
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 
 

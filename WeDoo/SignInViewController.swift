@@ -15,8 +15,6 @@ class SignInViewController: UIViewController {
     
     @IBOutlet weak var tfPassword: UITextField!
     
-    let mainSb = UIStoryboard(name: "Main", bundle: nil)
-    
      var spinner:UIActivityIndicatorView = UIActivityIndicatorView()
     
     override func viewDidLoad() {
@@ -34,7 +32,7 @@ class SignInViewController: UIViewController {
         showSpinner(show: true)
         Auth.auth().signIn(withEmail: email!, password: senha!, completion: { (user, error) in
             if error == nil {
-                let homeVc = self.mainSb.instantiateViewController(withIdentifier: "HomeScreen") as! ViewControllerHome
+                let homeVc = self.storyboard?.instantiateViewController(withIdentifier: "HomeScreen") as! ViewControllerHome
                 self.present(homeVc, animated: true, completion: nil)
             }
             else {

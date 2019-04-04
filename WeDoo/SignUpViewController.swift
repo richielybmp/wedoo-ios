@@ -26,8 +26,10 @@ class SignUpViewController: UIViewController {
 
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.closeBackButtonPressed))
         self.navigationItem.title = "Criar conta"
+        
         criaSpinner()
     }
+    
     
     @IBAction func handleSignUpClicked(_ sender: UIButton) {
         let email = tfEmail.text?.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -56,6 +58,12 @@ class SignUpViewController: UIViewController {
                 self.showSpinner(show:false)
             }
         }
+    }
+    
+    @IBAction func handleSignInClicked(_ sender: UIButton) {
+        let signInVc = mainSb.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
+        let navigationVc = UINavigationController(rootViewController: signInVc)
+        present(navigationVc, animated: true, completion: nil)
     }
     
     private func showSpinner(show: Bool){
