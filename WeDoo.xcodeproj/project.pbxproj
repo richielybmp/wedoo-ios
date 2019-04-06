@@ -16,6 +16,9 @@
 		8780A2CE2252772D004F5484 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8780A2CD2252772D004F5484 /* GoogleService-Info.plist */; };
 		87D87D472253F01C00CB4C7C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D87D462253F01C00CB4C7C /* SignUpViewController.swift */; };
 		87D87D492253F1AF00CB4C7C /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D87D482253F1AF00CB4C7C /* SignInViewController.swift */; };
+		AF03F6C522590F5C00EDEFA4 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF03F6C422590F5C00EDEFA4 /* TableViewController.swift */; };
+		AF03F6C82259114900EDEFA4 /* WeDoo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AF03F6C62259114900EDEFA4 /* WeDoo.xcdatamodeld */; };
+		AF03F6CA225915A700EDEFA4 /* ToDooCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF03F6C9225915A700EDEFA4 /* ToDooCell.swift */; };
 		E37EF295130DE0A97E618BE7 /* Pods_WeDoo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E266D7DE57EC815FC355FD /* Pods_WeDoo.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +37,9 @@
 		87AC30AD2254FF5000E86920 /* WeDoo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WeDoo.entitlements; sourceTree = "<group>"; };
 		87D87D462253F01C00CB4C7C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		87D87D482253F1AF00CB4C7C /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		AF03F6C422590F5C00EDEFA4 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		AF03F6C72259114900EDEFA4 /* WeDoo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WeDoo.xcdatamodel; sourceTree = "<group>"; };
+		AF03F6C9225915A700EDEFA4 /* ToDooCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDooCell.swift; sourceTree = "<group>"; };
 		D441333D2D6CD84F10D3D66F /* Pods-WeDoo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeDoo.debug.xcconfig"; path = "Target Support Files/Pods-WeDoo/Pods-WeDoo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,6 +104,9 @@
 				8780A2C4225274A7004F5484 /* LaunchScreen.storyboard */,
 				8780A2C7225274A7004F5484 /* Info.plist */,
 				8780A2CD2252772D004F5484 /* GoogleService-Info.plist */,
+				AF03F6C422590F5C00EDEFA4 /* TableViewController.swift */,
+				AF03F6C62259114900EDEFA4 /* WeDoo.xcdatamodeld */,
+				AF03F6C9225915A700EDEFA4 /* ToDooCell.swift */,
 			);
 			path = WeDoo;
 			sourceTree = "<group>";
@@ -258,10 +267,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				8780A2BE225274A6004F5484 /* ViewController.swift in Sources */,
+				AF03F6C522590F5C00EDEFA4 /* TableViewController.swift in Sources */,
 				8722EFB9225286CB00CF2D62 /* ViewControllerHome.swift in Sources */,
+				AF03F6C82259114900EDEFA4 /* WeDoo.xcdatamodeld in Sources */,
 				87D87D472253F01C00CB4C7C /* SignUpViewController.swift in Sources */,
 				87D87D492253F1AF00CB4C7C /* SignInViewController.swift in Sources */,
 				8780A2BC225274A6004F5484 /* AppDelegate.swift in Sources */,
+				AF03F6CA225915A700EDEFA4 /* ToDooCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,13 +422,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = WeDoo/WeDoo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YLQF9QUG88;
+				DEVELOPMENT_TEAM = WHX6M24547;
 				INFOPLIST_FILE = WeDoo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = br.espfullstackios.WeDoo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.espfullstackios.WeDoo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -430,13 +442,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = WeDoo/WeDoo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YLQF9QUG88;
+				DEVELOPMENT_TEAM = WHX6M24547;
 				INFOPLIST_FILE = WeDoo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = br.espfullstackios.WeDoo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.espfullstackios.WeDoo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -465,6 +477,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		AF03F6C62259114900EDEFA4 /* WeDoo.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				AF03F6C72259114900EDEFA4 /* WeDoo.xcdatamodel */,
+			);
+			currentVersion = AF03F6C72259114900EDEFA4 /* WeDoo.xcdatamodel */;
+			path = WeDoo.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 8780A2B0225274A6004F5484 /* Project object */;
 }
