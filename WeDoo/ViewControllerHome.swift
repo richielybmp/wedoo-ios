@@ -8,20 +8,29 @@
 
 import UIKit
 import Firebase
+import AlamofireImage
 
 class ViewControllerHome: UIViewController {
 
     @IBOutlet weak var labelWelcome: UILabel!
+    @IBOutlet weak var vrProfileImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let userMail = Auth.auth().currentUser?.email
+        if let userPhoto = Auth.auth().currentUser?.photoURL
+        {
+            setProfileImage(userPhoto)
+        }
         labelWelcome.text = "Bem vindo, \(userMail ?? "< mail@mailo.com>")"
+        
 
     }
 
-    @objc func addToDoo() {
-        print("xablau")
+    func setProfileImage (_ imageURL: URL){
+        vrProfileImage.layer.cornerRadius = vrProfileImage.frame.size.width / 2
+        vrProfileImage.clipsToBounds = true
+        vrProfileImage.af_setImage(withURL: imageURL)
     }
     
     @IBAction func signOutClick(_ sender: UIButton) {
@@ -34,4 +43,5 @@ class ViewControllerHome: UIViewController {
 //            print ("Error signing out: %@", signOutError)
         }
     }
+    
 }
