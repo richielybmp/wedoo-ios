@@ -99,8 +99,7 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     private func abrirHome(){
         //self.performSegue(withIdentifier: "showHomeSegue", sender: self)
         let signInVc = storyboard?.instantiateViewController(withIdentifier: "TabHomeScreen") as! UITabBarController
-        let navigationVc = UINavigationController(rootViewController: signInVc)
-        present(navigationVc, animated: true, completion: nil)
+        present(signInVc, animated: true, completion: nil)
     }
     
     private func showAlert(_ acTitle: String, _ aaTitle: String, error: Error){

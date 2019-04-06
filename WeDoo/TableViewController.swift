@@ -32,7 +32,7 @@ class TableViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addToDoo))
+
         
         // Do any additional setup after loading the view.
     }
@@ -41,4 +41,5 @@ class TableViewController: UIViewController, UITableViewDataSource {
         print("xablau")
     }
 
+    @IBOutlet weak var vrAddToDoo: UIBarButtonItem!
 }

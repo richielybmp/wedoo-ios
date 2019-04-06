@@ -17,8 +17,13 @@ class ViewControllerHome: UIViewController {
         super.viewDidLoad()
         let userMail = Auth.auth().currentUser?.email
         labelWelcome.text = "Bem vindo, \(userMail ?? "< mail@mailo.com>")"
+
     }
 
+    @objc func addToDoo() {
+        print("xablau")
+    }
+    
     @IBAction func signOutClick(_ sender: UIButton) {
         let firebaseAuth = Auth.auth()
         do {
