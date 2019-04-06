@@ -27,4 +27,8 @@ class NewToDooViewController: UIViewController {
     }
     */
 
+    @IBAction func saveAndPop(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+        
+    }
 }
