@@ -2,8 +2,10 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.98" systemVersion="18E226" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="ToDoo" representedClassName="ToDoo" syncable="YES" codeGenerationType="class">
         <attribute name="descricao" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="encerramento" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="nome" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tipo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="titulo" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="itens" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ToDooItem" inverseName="itens" inverseEntity="ToDooItem" syncable="YES"/>
     </entity>
     <entity name="ToDooItem" representedClassName="ToDooItem" syncable="YES" codeGenerationType="class">
@@ -14,7 +16,7 @@
         <relationship name="itens" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ToDoo" inverseName="itens" inverseEntity="ToDoo" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ToDoo" positionX="-54" positionY="-9" width="128" height="105"/>
+        <element name="ToDoo" positionX="-54" positionY="-9" width="128" height="135"/>
         <element name="ToDooItem" positionX="-36" positionY="9" width="128" height="120"/>
     </elements>
 </model>

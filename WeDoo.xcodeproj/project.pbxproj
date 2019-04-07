@@ -20,6 +20,10 @@
 		AF03F6C522590F5C00EDEFA4 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF03F6C422590F5C00EDEFA4 /* TableViewController.swift */; };
 		AF03F6C82259114900EDEFA4 /* WeDoo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AF03F6C62259114900EDEFA4 /* WeDoo.xcdatamodeld */; };
 		AF03F6CA225915A700EDEFA4 /* ToDooCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF03F6C9225915A700EDEFA4 /* ToDooCell.swift */; };
+		AF03F6CC225A5C6B00EDEFA4 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF03F6CB225A5C6B00EDEFA4 /* Validator.swift */; };
+		AF03F6D1225A60F500EDEFA4 /* UITextField+Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF03F6D0225A60F500EDEFA4 /* UITextField+Validate.swift */; };
+		AF03F6D3225A648A00EDEFA4 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF03F6D2225A648A00EDEFA4 /* UIViewController+Alert.swift */; };
+		AF87D375225A8D95008EF24D /* TableViewController+NSFRCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF87D374225A8D95008EF24D /* TableViewController+NSFRCDelegate.swift */; };
 		E37EF295130DE0A97E618BE7 /* Pods_WeDoo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E266D7DE57EC815FC355FD /* Pods_WeDoo.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +46,10 @@
 		AF03F6C422590F5C00EDEFA4 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		AF03F6C72259114900EDEFA4 /* WeDoo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WeDoo.xcdatamodel; sourceTree = "<group>"; };
 		AF03F6C9225915A700EDEFA4 /* ToDooCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDooCell.swift; sourceTree = "<group>"; };
+		AF03F6CB225A5C6B00EDEFA4 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		AF03F6D0225A60F500EDEFA4 /* UITextField+Validate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Validate.swift"; sourceTree = "<group>"; };
+		AF03F6D2225A648A00EDEFA4 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
+		AF87D374225A8D95008EF24D /* TableViewController+NSFRCDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableViewController+NSFRCDelegate.swift"; sourceTree = "<group>"; };
 		D441333D2D6CD84F10D3D66F /* Pods-WeDoo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeDoo.debug.xcconfig"; path = "Target Support Files/Pods-WeDoo/Pods-WeDoo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,6 +103,7 @@
 		8780A2BA225274A6004F5484 /* WeDoo */ = {
 			isa = PBXGroup;
 			children = (
+				AF03F6CF225A5F4500EDEFA4 /* Utils */,
 				87AC30AD2254FF5000E86920 /* WeDoo.entitlements */,
 				8780A2BB225274A6004F5484 /* AppDelegate.swift */,
 				8780A2BD225274A6004F5484 /* ViewController.swift */,
@@ -112,6 +121,17 @@
 				87DC2E7D225925BF007A2E3B /* NewToDooViewController.swift */,
 			);
 			path = WeDoo;
+			sourceTree = "<group>";
+		};
+		AF03F6CF225A5F4500EDEFA4 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				AF03F6CB225A5C6B00EDEFA4 /* Validator.swift */,
+				AF03F6D0225A60F500EDEFA4 /* UITextField+Validate.swift */,
+				AF03F6D2225A648A00EDEFA4 /* UIViewController+Alert.swift */,
+				AF87D374225A8D95008EF24D /* TableViewController+NSFRCDelegate.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,6 +291,10 @@
 			files = (
 				8780A2BE225274A6004F5484 /* ViewController.swift in Sources */,
 				AF03F6C522590F5C00EDEFA4 /* TableViewController.swift in Sources */,
+				AF03F6CC225A5C6B00EDEFA4 /* Validator.swift in Sources */,
+				AF87D375225A8D95008EF24D /* TableViewController+NSFRCDelegate.swift in Sources */,
+				AF03F6D3225A648A00EDEFA4 /* UIViewController+Alert.swift in Sources */,
+				AF03F6D1225A60F500EDEFA4 /* UITextField+Validate.swift in Sources */,
 				8722EFB9225286CB00CF2D62 /* ViewControllerHome.swift in Sources */,
 				AF03F6C82259114900EDEFA4 /* WeDoo.xcdatamodeld in Sources */,
 				87DC2E7E225925BF007A2E3B /* NewToDooViewController.swift in Sources */,
