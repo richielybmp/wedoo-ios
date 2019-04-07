@@ -232,47 +232,41 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J9Z-SE-X8c">
-                                <rect key="frame" x="159" y="268" width="57" height="30"/>
+                                <rect key="frame" x="159" y="241" width="57" height="30"/>
                                 <state key="normal" title="Sign out"/>
                                 <connections>
                                     <action selector="signOutClick:" destination="fiq-X7-dl3" eventType="touchUpInside" id="5Bd-ZC-c9z"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y1l-QZ-08c">
-                                <rect key="frame" x="166.5" y="232" width="42" height="21"/>
+                                <rect key="frame" x="166.5" y="210" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KUk-IY-9EM">
+                                <rect key="frame" x="137.5" y="85" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="bMe-qs-tO7"/>
+                                    <constraint firstAttribute="height" constant="100" id="okQ-Av-MGl"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.53511017319999998" green="0.69757500309999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="y1l-QZ-08c" firstAttribute="top" secondItem="zZF-SI-4qL" secondAttribute="top" constant="212" id="70v-M7-wrz"/>
-                            <constraint firstItem="J9Z-SE-X8c" firstAttribute="centerX" secondItem="y1l-QZ-08c" secondAttribute="centerX" id="Wzd-T1-03p"/>
-                            <constraint firstItem="y1l-QZ-08c" firstAttribute="centerX" secondItem="zZF-SI-4qL" secondAttribute="centerX" id="ZYh-bE-Q7P"/>
-                            <constraint firstItem="J9Z-SE-X8c" firstAttribute="top" secondItem="y1l-QZ-08c" secondAttribute="bottom" constant="15" id="t9Q-Wv-2SX"/>
+                            <constraint firstItem="y1l-QZ-08c" firstAttribute="centerX" secondItem="KUk-IY-9EM" secondAttribute="centerX" id="8Bl-8U-oHw"/>
+                            <constraint firstItem="y1l-QZ-08c" firstAttribute="top" secondItem="KUk-IY-9EM" secondAttribute="bottom" constant="25" id="LuZ-3d-MxX"/>
+                            <constraint firstItem="J9Z-SE-X8c" firstAttribute="centerX" secondItem="y1l-QZ-08c" secondAttribute="centerX" id="khi-uD-kSe"/>
+                            <constraint firstItem="KUk-IY-9EM" firstAttribute="top" secondItem="zZF-SI-4qL" secondAttribute="top" constant="65" id="nXS-wo-TAF"/>
+                            <constraint firstItem="J9Z-SE-X8c" firstAttribute="top" secondItem="y1l-QZ-08c" secondAttribute="bottom" constant="10" id="rOz-zz-wBG"/>
+                            <constraint firstItem="KUk-IY-9EM" firstAttribute="centerX" secondItem="zZF-SI-4qL" secondAttribute="centerX" id="wCH-Qj-ckc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zZF-SI-4qL"/>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="70v-M7-wrz"/>
-                                <exclude reference="ZYh-bE-Q7P"/>
-                                <exclude reference="Wzd-T1-03p"/>
-                                <exclude reference="t9Q-Wv-2SX"/>
-                            </mask>
-                        </variation>
-                        <variation key="heightClass=regular">
-                            <mask key="constraints">
-                                <include reference="70v-M7-wrz"/>
-                                <include reference="ZYh-bE-Q7P"/>
-                                <include reference="Wzd-T1-03p"/>
-                                <include reference="t9Q-Wv-2SX"/>
-                            </mask>
-                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Sobre" id="kTS-Qm-ygc"/>
                     <connections>
                         <outlet property="labelWelcome" destination="y1l-QZ-08c" id="Aci-Nk-ijw"/>
+                        <outlet property="vrProfileImage" destination="KUk-IY-9EM" id="GRN-ze-NBy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Olf-6w-rZU" userLabel="First Responder" sceneMemberID="firstResponder"/>

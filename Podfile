@@ -9,4 +9,5 @@ target 'WeDoo' do
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'GoogleSignIn'
+  pod 'AlamofireImage', '~> 3.3'
 end
