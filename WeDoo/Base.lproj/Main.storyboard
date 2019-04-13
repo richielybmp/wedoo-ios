@@ -497,7 +497,7 @@
                                 <rect key="frame" x="30" y="335" width="315" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <textInputTraits key="textInputTraits" textContentType="password"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L4J-Bp-hDt">
                                 <rect key="frame" x="30" y="395" width="315" height="45"/>
@@ -657,7 +657,7 @@
                                 <rect key="frame" x="30" y="335" width="315" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" textContentType="password"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1iV-SO-iD8">
                                 <rect key="frame" x="30" y="395" width="315" height="45"/>
@@ -829,6 +829,7 @@
                                         <connections>
                                             <outlet property="lblDescricao" destination="WWi-Ep-hK0" id="KB1-Hj-Jq0"/>
                                             <outlet property="lblTitulo" destination="mWJ-hn-M8C" id="tKl-YK-3Wg"/>
+                                            <segue destination="4Gn-cQ-dLL" kind="show" identifier="SegueEditToDooItem" id="o87-HZ-QG7"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -945,6 +946,6 @@
         <image name="todo-icon" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="nwh-si-Mpq"/>
+        <segue reference="o87-HZ-QG7"/>
     </inferredMetricsTieBreakers>
 </document>

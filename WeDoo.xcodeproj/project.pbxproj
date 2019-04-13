@@ -113,17 +113,14 @@
 		8780A2BA225274A6004F5484 /* WeDoo */ = {
 			isa = PBXGroup;
 			children = (
+				878D41662262858800E03083 /* Cells */,
+				878D4165226283FE00E03083 /* Login */,
 				878D415A2261286400E03083 /* ModelControllers */,
 				878D4159226119EE00E03083 /* TableViewControllers */,
 				AF03F6CF225A5F4500EDEFA4 /* Utils */,
 				87AC30AD2254FF5000E86920 /* WeDoo.entitlements */,
 				8780A2BB225274A6004F5484 /* AppDelegate.swift */,
-				8780A2BD225274A6004F5484 /* ViewController.swift */,
 				8722EFB8225286CB00CF2D62 /* ViewControllerHome.swift */,
-				87D87D462253F01C00CB4C7C /* SignUpViewController.swift */,
-				87D87D482253F1AF00CB4C7C /* SignInViewController.swift */,
-				AF03F6C9225915A700EDEFA4 /* ToDooCell.swift */,
-				878D415F2262304500E03083 /* ToDooItemCell.swift */,
 				8780A2BF225274A6004F5484 /* Main.storyboard */,
 				8780A2C2225274A7004F5484 /* Assets.xcassets */,
 				8780A2C4225274A7004F5484 /* LaunchScreen.storyboard */,
@@ -150,6 +147,25 @@
 				878D415B2261288B00E03083 /* NewToDooItemViewController.swift */,
 			);
 			path = ModelControllers;
+			sourceTree = "<group>";
+		};
+		878D4165226283FE00E03083 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				8780A2BD225274A6004F5484 /* ViewController.swift */,
+				87D87D462253F01C00CB4C7C /* SignUpViewController.swift */,
+				87D87D482253F1AF00CB4C7C /* SignInViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		878D41662262858800E03083 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				AF03F6C9225915A700EDEFA4 /* ToDooCell.swift */,
+				878D415F2262304500E03083 /* ToDooItemCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		AF03F6CF225A5F4500EDEFA4 /* Utils */ = {

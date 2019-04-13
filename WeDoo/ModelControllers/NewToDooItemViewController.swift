@@ -20,9 +20,18 @@ class NewToDooItemViewController:
     
     var managedObjectContext: NSManagedObjectContext?
     var toDooSelecionado: ToDoo?
+    var toDooItemSelecionado: ToDooItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if toDooItemSelecionado != nil {
+            tfTitle.text = toDooItemSelecionado?.titulo
+            tfDescription.text = toDooItemSelecionado?.descricao
+            //vrImageViewToDooItem.image = toDooItemSelecionado?.imagem
+            let titulo = toDooItemSelecionado?.titulo
+            self.title = "Editar \(titulo ?? "ToDoo Item")"
+        }
         hideKeyboardWhenTappedAround()
     }
     
@@ -82,10 +91,20 @@ class NewToDooItemViewController:
             toDooItem.titulo = title
             toDooItem.descricao = description
             toDooItem.status = false
-            toDooItem.id = UUID().uuidString
             
-            toDooSelecionado?.addToItens(toDooItem)
-            
+            if toDooItemSelecionado != nil {
+                //let item = toDooSelecionado?.itens?.filtered(using: NSPredicate(format: "id = %@", toDooItemSelecionado!.id!))
+                toDooItemSelecionado?.setValue(toDooItem.titulo, forKey: "titulo")
+                toDooItemSelecionado?.setValue(toDooItem.descricao, forKey: "descricao")
+                //toDooItemSelecionado?.setValue(toDooItem.imagem, forKey: "imagem")
+            }
+            else {
+                toDooItem.status = false
+                toDooItem.id = UUID().uuidString
+                toDooItem.createdate = Date()
+                
+                toDooSelecionado?.addToItens(toDooItem)
+            }
             try managedObjectContext.save()
         }
         catch {
