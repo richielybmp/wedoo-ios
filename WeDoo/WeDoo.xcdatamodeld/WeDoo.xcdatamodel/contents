@@ -9,6 +9,7 @@
         <relationship name="itens" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ToDooItem" inverseName="itens" inverseEntity="ToDooItem" syncable="YES"/>
     </entity>
     <entity name="ToDooItem" representedClassName="ToDooItem" syncable="YES" codeGenerationType="class">
+        <attribute name="createdate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="descricao" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="imagem" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
@@ -18,6 +19,6 @@
     </entity>
     <elements>
         <element name="ToDoo" positionX="-313.42578125" positionY="-10.3359375" width="128" height="135"/>
-        <element name="ToDooItem" positionX="-36" positionY="9" width="128" height="135"/>
+        <element name="ToDooItem" positionX="-36" positionY="9" width="128" height="148"/>
     </elements>
 </model>

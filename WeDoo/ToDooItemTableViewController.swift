@@ -12,11 +12,10 @@ import CoreData
 class ToDooItemTableViewController: UIViewController, UITableViewDataSource {
     
     let segueAddToDooItem = "SegueAddToDooItem"
-    
+    let segueEditToDooItem = "SegueEditToDooItem"
     var toDooSelecionado: ToDoo?
     
     @IBOutlet weak var tvToDooItem: UITableView!
-    
     @IBOutlet weak var lblEmptyItemList: UILabel!
     
     var contexto: NSManagedObjectContext {
@@ -27,6 +26,7 @@ class ToDooItemTableViewController: UIViewController, UITableViewDataSource {
     
     //Mostra label se nao houver ToDoos
     func updateView(){
+        tvToDooItem.reloadData()
         var hasToDooItens = false
         
         if let toDooItens = toDooSelecionado?.itens {
@@ -64,6 +64,10 @@ class ToDooItemTableViewController: UIViewController, UITableViewDataSource {
         self.updateView();
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.tvToDooItem.reloadData()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == segueAddToDooItem {
             if let destinationViewController = segue.destination as?  NewToDooItemViewController {
@@ -71,6 +75,15 @@ class ToDooItemTableViewController: UIViewController, UITableViewDataSource {
                 destinationViewController.toDooSelecionado = self.toDooSelecionado
             }
         }
+        else if segue.identifier == segueEditToDooItem {
+            if let destinationViewController = segue.destination as? NewToDooItemViewController {
+                destinationViewController.managedObjectContext = contexto
+                destinationViewController.toDooSelecionado = self.toDooSelecionado
+                
+                let indexPath = self.tvToDooItem.indexPathForSelectedRow!.row
+                let toDooItem = toDooSelecionado?.itens?[indexPath] as? ToDooItem
+                destinationViewController.toDooItemSelecionado = toDooItem
+            }
+        }
     }
-    
 }

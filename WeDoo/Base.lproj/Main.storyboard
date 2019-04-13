@@ -828,6 +828,7 @@
                                         <connections>
                                             <outlet property="lblDescricao" destination="WWi-Ep-hK0" id="KB1-Hj-Jq0"/>
                                             <outlet property="lblTitulo" destination="mWJ-hn-M8C" id="tKl-YK-3Wg"/>
+                                            <segue destination="4Gn-cQ-dLL" kind="show" identifier="SegueEditToDooItem" id="o87-HZ-QG7"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -943,4 +944,7 @@
         <image name="profile-icon" width="16" height="16"/>
         <image name="todo-icon" width="16" height="16"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="o87-HZ-QG7"/>
+    </inferredMetricsTieBreakers>
 </document>
