@@ -73,6 +73,7 @@ class NewToDooViewController: UIViewController, UIPickerViewDataSource, UIPicker
             toDoo.descricao = description
             toDoo.tipo = type
             toDoo.encerramento = encerramento
+            toDoo.id = UUID().uuidString
             
             try managedObjectContext.save()
             

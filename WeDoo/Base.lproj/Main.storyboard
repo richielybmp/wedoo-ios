@@ -321,7 +321,7 @@
                                         <connections>
                                             <outlet property="lblDescricao" destination="0AN-eh-DgE" id="UBU-l7-3Oh"/>
                                             <outlet property="lblTitulo" destination="W4X-Uy-TZT" id="dD0-ha-vNt"/>
-                                            <segue destination="OsQ-Z4-BlU" kind="show" id="q3c-tq-6rR"/>
+                                            <segue destination="OsQ-Z4-BlU" kind="show" identifier="SegueOpenToDooItemList" id="q3c-tq-6rR"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -799,7 +799,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="100" id="IMh-rI-zxp">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="toDooItemCell" rowHeight="100" id="IMh-rI-zxp" customClass="ToDooItemCell" customModule="WeDoo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IMh-rI-zxp" id="zgX-wi-Wce">
@@ -826,6 +826,10 @@
                                                 <constraint firstItem="mWJ-hn-M8C" firstAttribute="top" secondItem="zgX-wi-Wce" secondAttribute="topMargin" constant="15" id="tOb-4K-1Su"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="lblDescricao" destination="WWi-Ep-hK0" id="KB1-Hj-Jq0"/>
+                                            <outlet property="lblTitulo" destination="mWJ-hn-M8C" id="tKl-YK-3Wg"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -842,14 +846,14 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Scq-eO-Z5r">
                             <connections>
                                 <action selector="saveAndPop:" destination="OsQ-Z4-BlU" id="xOV-SE-eaN"/>
-                                <segue destination="4Gn-cQ-dLL" kind="show" id="E4f-fE-tRz"/>
+                                <segue destination="4Gn-cQ-dLL" kind="show" identifier="SegueAddToDooItem" id="E4f-fE-tRz"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="tableViewToDooItem" destination="6DO-xA-Lfw" id="RYM-GJ-YR9"/>
-                        <outlet property="vrEmptyToDooItemListLabel" destination="gkt-gD-zNE" id="ol0-AW-zQF"/>
+                        <outlet property="lblEmptyItemList" destination="gkt-gD-zNE" id="Qpe-Hr-Zpb"/>
+                        <outlet property="tvToDooItem" destination="6DO-xA-Lfw" id="LRY-Wg-JBm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s0Q-RL-M5F" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -913,10 +917,16 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Novo ToDoo Item" id="1bt-Vv-0lh">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="pEe-rG-dsq"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="pEe-rG-dsq">
+                            <connections>
+                                <action selector="saveAndPop:" destination="4Gn-cQ-dLL" id="vQD-X8-n2D"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="tfDescription" destination="YEw-1Y-HJ7" id="acE-zu-PAz"/>
+                        <outlet property="tfTitle" destination="SAU-NN-hy6" id="tNC-8d-RHp"/>
                         <outlet property="vrImageViewToDooItem" destination="al4-pp-oTV" id="oYW-26-XJg"/>
                     </connections>
                 </viewController>

@@ -13,6 +13,8 @@ class TableViewController: UIViewController, UITableViewDataSource {
     
     private let segueAddToDooViewController = "SegueAddToDooViewController"
     
+    private let segueOpenToDooItemList = "SegueOpenToDooItemList"
+    
     @IBOutlet weak var tvTableToDoo: UITableView!
 
     @IBOutlet weak var lblMessage: UILabel!
@@ -22,7 +24,6 @@ class TableViewController: UIViewController, UITableViewDataSource {
         
         return delegate.persistentContainer.viewContext
     }
-    
     
     fileprivate lazy var fetechedResultsController : NSFetchedResultsController<ToDoo> = {
         //Cria um Fetch Request
@@ -89,6 +90,14 @@ class TableViewController: UIViewController, UITableViewDataSource {
         if segue.identifier == segueAddToDooViewController {
             if let destinationViewController = segue.destination as?  NewToDooViewController {
                 destinationViewController.managedObjectContext = contexto
+            }
+        }
+        else if segue.identifier == segueOpenToDooItemList {
+            if let destinationViewController = segue.destination as? ToDooItemTableViewController {
+                if let indexPath = self.tvTableToDoo.indexPathForSelectedRow {
+                    let toDooSelecionado = fetechedResultsController.object(at: indexPath)
+                    destinationViewController.toDooSelecionado = toDooSelecionado
+                }
             }
         }
     }
