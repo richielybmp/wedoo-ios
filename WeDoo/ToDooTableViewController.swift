@@ -3,7 +3,7 @@
 //  WeDoo
 //
 //  Created by Mateus Augusto Stedler on 06/04/19.
-//  Copyright © 2019 Richiely Paiva. All rights reserved.
+//  Copyright © 2019 Filipe Maciel, Mateus Stedler, Richiely Paiva. All rights reserved.
 //
 
 import UIKit
@@ -13,6 +13,8 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     private let segueAddToDooViewController = "SegueAddToDooViewController"
     private let segueEditToDoo = "SegueEditToDoo"
+    
+    private let segueOpenToDooItemList = "SegueOpenToDooItemList"
     
     @IBOutlet weak var tvTableToDoo: UITableView!
 
@@ -25,7 +27,6 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         return delegate.persistentContainer.viewContext
     }
-    
     
     fileprivate lazy var fetechedResultsController : NSFetchedResultsController<ToDoo> = {
         //Cria um Fetch Request
@@ -97,6 +98,14 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
             if let destinationViewController = segue.destination as?  NewToDooViewController {
                 destinationViewController.toDoo = toDooAux
                 destinationViewController.managedObjectContext = contexto
+            }
+        }
+        else if segue.identifier == segueOpenToDooItemList {
+            if let destinationViewController = segue.destination as? ToDooItemTableViewController {
+                if let indexPath = self.tvTableToDoo.indexPathForSelectedRow {
+                    let toDooSelecionado = fetechedResultsController.object(at: indexPath)
+                    destinationViewController.toDooSelecionado = toDooSelecionado
+                }
             }
         }
     }

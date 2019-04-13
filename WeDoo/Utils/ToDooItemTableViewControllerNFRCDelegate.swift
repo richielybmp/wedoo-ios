@@ -1,21 +1,21 @@
 //
-//  TableViewController+NSFRCDelegate.swift
+//  ToDooItemTableViewControllerNFRCDelegate.swift
 //  WeDoo
 //
-//  Created by Mateus Augusto Stedler on 07/04/19.
+//  Created by Richiely Paiva on 13/04/19.
 //  Copyright © 2019 Filipe Maciel, Mateus Stedler, Richiely Paiva. All rights reserved.
 //
 
 import Foundation
 import CoreData
 
-extension TableViewController : NSFetchedResultsControllerDelegate {
+extension ToDooItemTableViewController : NSFetchedResultsControllerDelegate {
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tvTableToDoo.beginUpdates()
+        tvToDooItem.beginUpdates()
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tvTableToDoo.endUpdates()
+        tvToDooItem.endUpdates()
         updateView()
     }
     
@@ -24,17 +24,18 @@ extension TableViewController : NSFetchedResultsControllerDelegate {
         switch type {
         case .insert:
             if let indexPath = newIndexPath {
-                tvTableToDoo.insertRows(at: [indexPath], with: .fade)
+                tvToDooItem.insertRows(at: [indexPath], with: .fade)
             }
         case .delete:
             if let indexPath = indexPath {
-                tvTableToDoo.deleteRows(at: [indexPath], with: .fade)
+                tvToDooItem.deleteRows(at: [indexPath], with: .fade)
             }
         case .update:
-            print("ToDoo")
-            //TODOO
+            print("ToDooItem")
+        //TODOO
         default:
             print("...")
         }
     }
 }
+
