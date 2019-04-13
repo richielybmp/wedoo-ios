@@ -193,7 +193,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1020;
 				LastUpgradeCheck = 1020;
-				ORGANIZATIONNAME = "Richiely Paiva";
+				ORGANIZATIONNAME = "Filipe Maciel, Mateus Stedler, Richiely Paiva";
 				TargetAttributes = {
 					8780A2B7225274A6004F5484 = {
 						CreatedOnToolsVersion = 10.2;

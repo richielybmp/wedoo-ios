@@ -2,8 +2,8 @@
 //  NewToDooViewController.swift
 //  WeDoo
 //
-//  Created by Gean Delon on 06/04/19.
-//  Copyright © 2019 Richiely Paiva. All rights reserved.
+//  Created by Richiely Paiva on 06/04/19.
+//  Copyright © 2019 Filipe Maciel, Mateus Stedler, Richiely Paiva. All rights reserved.
 //
 
 import UIKit

@@ -3,7 +3,7 @@
 //  WeDoo
 //
 //  Created by Mateus Augusto Stedler on 06/04/19.
-//  Copyright © 2019 Richiely Paiva. All rights reserved.
+//  Copyright © 2019 Filipe Maciel, Mateus Stedler, Richiely Paiva. All rights reserved.
 //
 
 import UIKit
