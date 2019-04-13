@@ -18,7 +18,28 @@ class NewToDooViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     var types :  [String] = ["Tarefa", "Compra"]
     
+    var toDoo: ToDoo?
+    
     var managedObjectContext: NSManagedObjectContext?
+    
+    
+    
+    func setup() {
+        var title: String
+        if let toDoo = toDoo {
+            tfTitle.text = toDoo.titulo
+            tfDescription.text = toDoo.descricao
+            dpEndDate.date = toDoo.encerramento!
+            pvType.selectRow(types.index(of: toDoo.tipo!)!, inComponent: 0, animated: false)
+            title = "Editar"
+        } else {
+            title = "Novo"
+        }
+        
+        self.navigationItem.title = title + " ToDoo"
+        dpEndDate.minimumDate = Date()
+        hideKeyboardWhenTappedAround()
+    }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -34,10 +55,7 @@ class NewToDooViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationItem.title = "Novo ToDoo"
-        dpEndDate.minimumDate = Date()
-        hideKeyboardWhenTappedAround()
+        setup();
     }
     
     //tap recognizer para esconder o teclado

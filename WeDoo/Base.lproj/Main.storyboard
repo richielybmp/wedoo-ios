@@ -36,7 +36,7 @@
                                 </variation>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="ZTS-yt-5N5">
-                                <rect key="frame" x="0.0" y="30" width="375.00000000000011" height="300"/>
+                                <rect key="frame" x="0.0" y="30" width="375" height="300"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="sAh-hl-I3l"/>
                                 </constraints>
@@ -355,6 +355,7 @@
                     <connections>
                         <outlet property="lblMessage" destination="oeH-Wg-ral" id="umI-F8-ikz"/>
                         <outlet property="tvTableToDoo" destination="uzl-9z-ZWO" id="jb5-Ki-vbl"/>
+                        <segue destination="lMA-eg-RIC" kind="show" identifier="SegueEditToDoo" id="nwh-si-Mpq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aRZ-qi-2ou" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -536,7 +537,7 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="bottomLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="fxb-ub-7pt">
-                                <rect key="frame" x="0.0" y="30" width="375.00000000000011" height="220"/>
+                                <rect key="frame" x="0.0" y="30" width="375" height="220"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="220" id="2pT-bz-l1S"/>
                                 </constraints>
@@ -684,7 +685,7 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="8qW-rE-cOt">
-                                <rect key="frame" x="0.0" y="30" width="375.00000000000011" height="220"/>
+                                <rect key="frame" x="0.0" y="30" width="375" height="220"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="220" id="4FS-N5-KF1"/>
                                 </constraints>
@@ -887,7 +888,7 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="al4-pp-oTV">
-                                <rect key="frame" x="40" y="309" width="295.00000000000011" height="150"/>
+                                <rect key="frame" x="40" y="309" width="295" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="Dcm-zh-y95"/>
                                 </constraints>
@@ -930,4 +931,7 @@
         <image name="profile-icon" width="16" height="16"/>
         <image name="todo-icon" width="16" height="16"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="nwh-si-Mpq"/>
+    </inferredMetricsTieBreakers>
 </document>

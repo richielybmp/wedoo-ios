@@ -6,17 +6,17 @@
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="tipo" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="titulo" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="itens" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ToDooItem" inverseName="itens" inverseEntity="ToDooItem" syncable="YES"/>
+        <relationship name="itens" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ToDooItem" inverseName="toDoo" inverseEntity="ToDooItem" syncable="YES"/>
     </entity>
     <entity name="ToDooItem" representedClassName="ToDooItem" syncable="YES" codeGenerationType="class">
         <attribute name="descricao" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="status" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="titulo" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="itens" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ToDoo" inverseName="itens" inverseEntity="ToDoo" syncable="YES"/>
+        <relationship name="toDoo" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="ToDoo" inverseName="itens" inverseEntity="ToDoo" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ToDoo" positionX="-54" positionY="-9" width="128" height="135"/>
-        <element name="ToDooItem" positionX="-36" positionY="9" width="128" height="120"/>
+        <element name="ToDoo" positionX="-54" positionY="-9" width="128" height="133"/>
+        <element name="ToDooItem" positionX="-36" positionY="9" width="128" height="118"/>
     </elements>
 </model>

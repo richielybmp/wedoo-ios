@@ -9,13 +9,16 @@
 import UIKit
 import CoreData
 
-class TableViewController: UIViewController, UITableViewDataSource {
+class TableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     private let segueAddToDooViewController = "SegueAddToDooViewController"
+    private let segueEditToDoo = "SegueEditToDoo"
     
     @IBOutlet weak var tvTableToDoo: UITableView!
 
     @IBOutlet weak var lblMessage: UILabel!
+    
+    private var toDooAux: ToDoo?
     
     var contexto: NSManagedObjectContext {
         let delegate = UIApplication.shared.delegate as! AppDelegate
@@ -90,21 +93,46 @@ class TableViewController: UIViewController, UITableViewDataSource {
             if let destinationViewController = segue.destination as?  NewToDooViewController {
                 destinationViewController.managedObjectContext = contexto
             }
+        } else if segue.identifier == segueEditToDoo {
+            if let destinationViewController = segue.destination as?  NewToDooViewController {
+                destinationViewController.toDoo = toDooAux
+                destinationViewController.managedObjectContext = contexto
+            }
         }
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
-        //Swipe to Delete
-        if editingStyle == .delete {
-            let toDoo = fetechedResultsController.object(at: indexPath)
-            
+    func deleteAction(at: IndexPath) -> UIContextualAction {
+        let delete = UIContextualAction(style: .destructive, title: "Excluir", handler: { (ac, UIView, success) in
+            let toDoo = self.fetechedResultsController.object(at: at)
             toDoo.managedObjectContext?.delete(toDoo)
-            
             do {
-                try contexto.save()
+                try self.contexto.save()
             } catch {}
-        }
+            success(true)
+        })
+        return delete
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = deleteAction(at: indexPath)
+        let configuration = UISwipeActionsConfiguration(actions: [delete])
+        return configuration
+    }
+    
+    func editAction(at: IndexPath) -> UIContextualAction {
+        let edit = UIContextualAction(style: .normal, title: "Editar", handler: { (ac, UIView, success) in
+            self.toDooAux = self.fetechedResultsController.object(at: at)
+            self.performSegue(withIdentifier: self.segueEditToDoo, sender: ac)
+            success(true)
+        })
+        return edit
+    }
+    
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let edit = editAction(at: indexPath)
+        edit.backgroundColor = .brown
+        let configuration = UISwipeActionsConfiguration(actions: [edit])
+        return configuration
     }
     
 }
