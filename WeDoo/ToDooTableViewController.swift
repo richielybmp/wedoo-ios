@@ -52,12 +52,17 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tvTableToDoo.dequeueReusableCell(withIdentifier: "toDooCell") as! ToDooCell
         
-        let toDoo = fetechedResultsController.object(at: indexPath)
+        configureCell(cell, at: indexPath)
+        
+        return cell
+    }
+    
+    func configureCell(_ cell : ToDooCell, at : IndexPath) {
+        let toDoo = fetechedResultsController.object(at: at)
         
         cell.lblTitulo.text = toDoo.titulo
         cell.lblDescricao.text = toDoo.descricao
         
-        return cell
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -111,7 +116,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func deleteAction(at: IndexPath) -> UIContextualAction {
-        let delete = UIContextualAction(style: .destructive, title: "Excluir", handler: { (ac, UIView, success) in
+        let delete = UIContextualAction(style: .destructive, title: nil, handler: { (ac, UIView, success) in
             let toDoo = self.fetechedResultsController.object(at: at)
             toDoo.managedObjectContext?.delete(toDoo)
             do {
@@ -119,6 +124,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
             } catch {}
             success(true)
         })
+        delete.image = ImageHelper.scaled(named: "trash", width: 30, height: 30)
         return delete
     }
     
@@ -129,19 +135,38 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func editAction(at: IndexPath) -> UIContextualAction {
-        let edit = UIContextualAction(style: .normal, title: "Editar", handler: { (ac, UIView, success) in
+        let edit = UIContextualAction(style: .normal, title: nil, handler: { (ac, UIView, success) in
             self.toDooAux = self.fetechedResultsController.object(at: at)
             self.performSegue(withIdentifier: self.segueEditToDoo, sender: ac)
             success(true)
         })
+        edit.image = ImageHelper.scaled(named: "edit", width: 30, height: 30)
         return edit
+    }
+    
+    func completeAction(at : IndexPath) -> UIContextualAction {
+        let complete = UIContextualAction(style: .normal, title: nil, handler: {(ac, UIView, success) in
+            let toDoo = self.fetechedResultsController.object(at: at)
+            
+            toDoo.terminado = true
+            
+            do {
+                try self.contexto.save()
+            } catch {}
+            
+            success(true)
+        })
+        complete.backgroundColor = UIColor(named: "green-checked")
+        complete.image = ImageHelper.scaled(named: "checkmark", width: 30, height: 30)
+        return complete
     }
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let edit = editAction(at: indexPath)
+        let complete = completeAction(at: indexPath)
         edit.backgroundColor = .brown
-        let configuration = UISwipeActionsConfiguration(actions: [edit])
+        let configuration = UISwipeActionsConfiguration(actions: [edit, complete])
         return configuration
     }
-    
+    			
 }

@@ -31,8 +31,10 @@ extension TableViewController : NSFetchedResultsControllerDelegate {
                 tvTableToDoo.deleteRows(at: [indexPath], with: .fade)
             }
         case .update:
-            print("ToDoo")
-            //TODOO
+            if let indexPath = indexPath {
+                let cell = tvTableToDoo.cellForRow(at: indexPath) as! ToDooCell
+                configureCell(cell, at: indexPath)
+            }
         default:
             print("...")
         }

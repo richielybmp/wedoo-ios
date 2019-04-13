@@ -86,7 +86,10 @@ class NewToDooViewController: UIViewController, UIPickerViewDataSource, UIPicker
             let type = types[pvType.selectedRow(inComponent: 0)]
             let encerramento = dpEndDate.date
             
-            let toDoo = ToDoo(context: managedObjectContext)
+            let toDoo = self.toDoo ?? { () -> ToDoo in
+                let toDoo = ToDoo(context: managedObjectContext)
+                return toDoo
+                }()
             toDoo.titulo = title
             toDoo.descricao = description
             toDoo.tipo = type

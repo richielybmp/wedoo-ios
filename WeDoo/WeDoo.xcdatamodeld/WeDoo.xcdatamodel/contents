@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.98" systemVersion="18E226" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="ToDoo" representedClassName="ToDoo" syncable="YES" codeGenerationType="class">
+        <attribute name="criado_em" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="descricao" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="encerramento" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="terminado" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="tipo" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="titulo" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="itens" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ToDooItem" inverseName="itens" inverseEntity="ToDooItem" syncable="YES"/>
+        <relationship name="itens" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ToDooItem" inverseName="toDoo" inverseEntity="ToDooItem" syncable="YES"/>
     </entity>
     <entity name="ToDooItem" representedClassName="ToDooItem" syncable="YES" codeGenerationType="class">
         <attribute name="descricao" optional="YES" attributeType="String" syncable="YES"/>
@@ -17,7 +19,7 @@
         <relationship name="toDoo" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="ToDoo" inverseName="itens" inverseEntity="ToDoo" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ToDoo" positionX="-313.42578125" positionY="-10.3359375" width="128" height="135"/>
+        <element name="ToDoo" positionX="-313.42578125" positionY="-10.3359375" width="128" height="165"/>
         <element name="ToDooItem" positionX="-36" positionY="9" width="128" height="135"/>
     </elements>
 </model>

@@ -28,6 +28,7 @@
 		AF03F6D1225A60F500EDEFA4 /* UITextField+Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF03F6D0225A60F500EDEFA4 /* UITextField+Validate.swift */; };
 		AF03F6D3225A648A00EDEFA4 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF03F6D2225A648A00EDEFA4 /* UIViewController+Alert.swift */; };
 		AF87D375225A8D95008EF24D /* TableViewController+NSFRCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF87D374225A8D95008EF24D /* TableViewController+NSFRCDelegate.swift */; };
+		AF87D377226299F7008EF24D /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF87D376226299F7008EF24D /* ImageHelper.swift */; };
 		E37EF295130DE0A97E618BE7 /* Pods_WeDoo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E266D7DE57EC815FC355FD /* Pods_WeDoo.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,7 @@
 		AF03F6D0225A60F500EDEFA4 /* UITextField+Validate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Validate.swift"; sourceTree = "<group>"; };
 		AF03F6D2225A648A00EDEFA4 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		AF87D374225A8D95008EF24D /* TableViewController+NSFRCDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableViewController+NSFRCDelegate.swift"; sourceTree = "<group>"; };
+		AF87D376226299F7008EF24D /* ImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
 		D441333D2D6CD84F10D3D66F /* Pods-WeDoo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeDoo.debug.xcconfig"; path = "Target Support Files/Pods-WeDoo/Pods-WeDoo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -158,6 +160,7 @@
 				AF03F6D2225A648A00EDEFA4 /* UIViewController+Alert.swift */,
 				AF87D374225A8D95008EF24D /* TableViewController+NSFRCDelegate.swift */,
 				878D41612262481900E03083 /* ToDooItemTableViewControllerNFRCDelegate.swift */,
+				AF87D376226299F7008EF24D /* ImageHelper.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -244,7 +247,6 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-WeDoo/Pods-WeDoo-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-WeDoo/Pods-WeDoo-resources.sh",
@@ -252,7 +254,6 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-WeDoo/Pods-WeDoo-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
@@ -268,7 +269,6 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-WeDoo/Pods-WeDoo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-WeDoo/Pods-WeDoo-frameworks.sh",
@@ -281,7 +281,6 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-WeDoo/Pods-WeDoo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
@@ -336,6 +335,7 @@
 				AF03F6D1225A60F500EDEFA4 /* UITextField+Validate.swift in Sources */,
 				8722EFB9225286CB00CF2D62 /* ViewControllerHome.swift in Sources */,
 				AF03F6C82259114900EDEFA4 /* WeDoo.xcdatamodeld in Sources */,
+				AF87D377226299F7008EF24D /* ImageHelper.swift in Sources */,
 				87DC2E7E225925BF007A2E3B /* NewToDooViewController.swift in Sources */,
 				878D41622262481900E03083 /* ToDooItemTableViewControllerNFRCDelegate.swift in Sources */,
 				87D87D472253F01C00CB4C7C /* SignUpViewController.swift in Sources */,
