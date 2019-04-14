@@ -833,6 +833,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="OsQ-Z4-BlU" id="tUu-IW-SGt"/>
+                                    <outlet property="delegate" destination="OsQ-Z4-BlU" id="pG0-TG-TYe"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -947,5 +951,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="o87-HZ-QG7"/>
+        <segue reference="nwh-si-Mpq"/>
     </inferredMetricsTieBreakers>
 </document>

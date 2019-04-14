@@ -12,8 +12,8 @@ import CoreData
 class NewToDooItemViewController:
     UIViewController,
     UIImagePickerControllerDelegate,
-    UINavigationControllerDelegate{
-
+UINavigationControllerDelegate{
+    
     @IBOutlet weak var vrImageViewToDooItem: UIImageView!
     @IBOutlet weak var tfTitle: UITextField!
     @IBOutlet weak var tfDescription: UITextField!
@@ -25,11 +25,11 @@ class NewToDooItemViewController:
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if toDooItemSelecionado != nil {
-            tfTitle.text = toDooItemSelecionado?.titulo
-            tfDescription.text = toDooItemSelecionado?.descricao
-            //vrImageViewToDooItem.image = toDooItemSelecionado?.imagem
-            let titulo = toDooItemSelecionado?.titulo
+        if let toDooItemSelecionado = toDooItemSelecionado {
+            tfTitle.text = toDooItemSelecionado.titulo
+            tfDescription.text = toDooItemSelecionado.descricao
+            vrImageViewToDooItem.image = toDooItemSelecionado.imagem as! UIImage
+            let titulo = toDooItemSelecionado.titulo
             self.title = "Editar \(titulo ?? "ToDoo Item")"
         }
         hideKeyboardWhenTappedAround()
@@ -47,13 +47,13 @@ class NewToDooItemViewController:
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
- 
+        
         //BUSCA OS DADOS DA IMAGEM NO DICIONARIO
         let photo = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
-
+        
         //SETA O IMAGEVIEW PARA A IMAGEM ESCOLHIDA
         vrImageViewToDooItem.image = photo
-
+        
         //GARANTE A SAIDA DO PICKER DA TELA
         picker.dismiss(animated: true, completion: nil)
     }
@@ -84,27 +84,22 @@ class NewToDooItemViewController:
             let title = try tfTitle.validatedText(validatorType: .title)
             let description = tfDescription.text
             let itemImage = vrImageViewToDooItem.image
-            
-            let toDooItem = ToDooItem(context: managedObjectContext)
-            guard let dataImage = itemImage?.jpegData(compressionQuality: 1) else { return false }
+            //guard let dataImage = itemImage?.jpegData(compressionQuality: 1) else { return false }
             //toDooItem.imagem = NSData(data: dataImage) as Data
-            toDooItem.titulo = title
-            toDooItem.descricao = description
-            toDooItem.status = false
             
-            if toDooItemSelecionado != nil {
-                //let item = toDooSelecionado?.itens?.filtered(using: NSPredicate(format: "id = %@", toDooItemSelecionado!.id!))
-                toDooItemSelecionado?.setValue(toDooItem.titulo, forKey: "titulo")
-                toDooItemSelecionado?.setValue(toDooItem.descricao, forKey: "descricao")
-                //toDooItemSelecionado?.setValue(toDooItem.imagem, forKey: "imagem")
-            }
-            else {
-                toDooItem.status = false
+            //checa se o toDooItemSelecionado != nil, se nao ->
+            let toDooItem = self.toDooItemSelecionado ?? { () -> ToDooItem in
+                let toDooItem = ToDooItem(context: managedObjectContext)
                 toDooItem.id = UUID().uuidString
                 toDooItem.createdate = Date()
-                
-                toDooSelecionado?.addToItens(toDooItem)
-            }
+                toDooItem.toDoo = toDooSelecionado
+                return toDooItem
+                }()
+            
+            toDooItem.titulo = title
+            toDooItem.descricao = description
+            toDooItem.imagem = itemImage
+            
             try managedObjectContext.save()
         }
         catch {

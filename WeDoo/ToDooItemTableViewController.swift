@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class ToDooItemTableViewController: UIViewController, UITableViewDataSource {
+class ToDooItemTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     let segueAddToDooItem = "SegueAddToDooItem"
     let segueEditToDooItem = "SegueEditToDooItem"
@@ -24,12 +24,31 @@ class ToDooItemTableViewController: UIViewController, UITableViewDataSource {
         return delegate.persistentContainer.viewContext
     }
     
+    fileprivate lazy var fetchedResultsController : NSFetchedResultsController<ToDooItem> = {
+        //Cria um Fetch Request
+        let fetchRequest: NSFetchRequest<ToDooItem> = ToDooItem.fetchRequest()
+        
+        //Configura Fetch Request para ordenar pela data de encerramento
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "createdate", ascending: true)]
+        
+        fetchRequest.predicate = NSPredicate(format: "toDoo.id == %@", self.toDooSelecionado!.id!)
+        
+        //Cria o Controller
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: contexto, sectionNameKeyPath: nil, cacheName: nil)
+        
+        //Metodos implementados em Utils/ToDooItemTableViewController+...
+        fetchedResultsController.delegate = self
+        
+        return fetchedResultsController
+    }()
+    
+    
+    
     //Mostra label se nao houver ToDoos
     func updateView(){
-        tvToDooItem.reloadData()
         var hasToDooItens = false
         
-        if let toDooItens = toDooSelecionado?.itens {
+        if let toDooItens = fetchedResultsController.fetchedObjects {
             hasToDooItens = toDooItens.count > 0
         }
 
@@ -42,30 +61,34 @@ class ToDooItemTableViewController: UIViewController, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let toDooItens = toDooSelecionado?.itens else {return 0}
+        guard let toDooItens = fetchedResultsController.fetchedObjects else {return 0}
         return toDooItens.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tvToDooItem.dequeueReusableCell(withIdentifier: "toDooItemCell") as! ToDooItemCell
 
-        let toDooItem = toDooSelecionado?.itens?[indexPath.row] as? ToDooItem
-
-        cell.lblTitulo.text = toDooItem?.titulo
-        cell.lblDescricao.text = toDooItem?.descricao
-
+        configureCell(cell, at: indexPath)
         return cell
+    }
+    
+    func configureCell(_ cell : ToDooItemCell, at : IndexPath) {
+        let toDooItem = fetchedResultsController.object(at: at)
+        
+        cell.lblTitulo.text = toDooItem.titulo
+        cell.lblDescricao.text = toDooItem.descricao
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = toDooSelecionado?.titulo
-        self.tvToDooItem.dataSource = self
+        do {
+            //Tenta fazer o fetch de ToDoos
+            try self.fetchedResultsController.performFetch();
+        } catch (let error) {
+            self.showAlert(for: error.localizedDescription)
+        }
         self.updateView();
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.tvToDooItem.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -80,10 +103,14 @@ class ToDooItemTableViewController: UIViewController, UITableViewDataSource {
                 destinationViewController.managedObjectContext = contexto
                 destinationViewController.toDooSelecionado = self.toDooSelecionado
                 
-                let indexPath = self.tvToDooItem.indexPathForSelectedRow!.row
-                let toDooItem = toDooSelecionado?.itens?[indexPath] as? ToDooItem
+                let indexPath = self.tvToDooItem.indexPathForSelectedRow!
+                let toDooItem = fetchedResultsController.object(at: indexPath)
                 destinationViewController.toDooItemSelecionado = toDooItem
             }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
     }
 }

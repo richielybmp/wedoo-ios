@@ -4,7 +4,7 @@
         <attribute name="criado_em" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="descricao" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="encerramento" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" attributeType="String" syncable="YES"/>
         <attribute name="terminado" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="tipo" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="titulo" optional="YES" attributeType="String" syncable="YES"/>
@@ -14,13 +14,13 @@
         <attribute name="createdate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="descricao" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="imagem" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
-        <attribute name="status" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="imagem" optional="YES" attributeType="Transformable" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="status" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="titulo" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="toDoo" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="ToDoo" inverseName="itens" inverseEntity="ToDoo" syncable="YES"/>
+        <relationship name="toDoo" maxCount="1" deletionRule="No Action" destinationEntity="ToDoo" inverseName="itens" inverseEntity="ToDoo" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ToDoo" positionX="-313.42578125" positionY="-10.3359375" width="128" height="135"/>
-        <element name="ToDooItem" positionX="-36" positionY="9" width="128" height="148"/>
+        <element name="ToDoo" positionX="-313.42578125" positionY="-10.3359375" width="128" height="165"/>
+        <element name="ToDooItem" positionX="-36" positionY="9" width="128" height="150"/>
     </elements>
 </model>

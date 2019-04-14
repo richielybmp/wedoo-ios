@@ -31,8 +31,10 @@ extension ToDooItemTableViewController : NSFetchedResultsControllerDelegate {
                 tvToDooItem.deleteRows(at: [indexPath], with: .fade)
             }
         case .update:
-            print("ToDooItem")
-        //TODOO
+            if let indexPath = indexPath {
+                let cell = tvToDooItem.cellForRow(at: indexPath) as! ToDooItemCell
+                configureCell(cell, at: indexPath)
+            }
         default:
             print("...")
         }

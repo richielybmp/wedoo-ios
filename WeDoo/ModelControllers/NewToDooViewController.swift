@@ -22,8 +22,6 @@ class NewToDooViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     var managedObjectContext: NSManagedObjectContext?
     
-    
-    
     func setup() {
         var title: String
         if let toDoo = toDoo {
@@ -86,15 +84,18 @@ class NewToDooViewController: UIViewController, UIPickerViewDataSource, UIPicker
             let type = types[pvType.selectedRow(inComponent: 0)]
             let encerramento = dpEndDate.date
             
+            //checa se o toDoo ja existe
             let toDoo = self.toDoo ?? { () -> ToDoo in
                 let toDoo = ToDoo(context: managedObjectContext)
+                toDoo.id = UUID().uuidString
+                toDoo.criado_em = Date()
                 return toDoo
                 }()
             toDoo.titulo = title
             toDoo.descricao = description
             toDoo.tipo = type
             toDoo.encerramento = encerramento
-            toDoo.id = UUID().uuidString
+            
             
             try managedObjectContext.save()
             

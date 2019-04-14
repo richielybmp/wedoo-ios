@@ -65,6 +65,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         
     }
     
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -83,7 +84,6 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         do {
             //Tenta fazer o fetch de ToDoos
             try self.fetechedResultsController.performFetch();
@@ -144,29 +144,32 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         return edit
     }
     
-    func completeAction(at : IndexPath) -> UIContextualAction {
-        let complete = UIContextualAction(style: .normal, title: nil, handler: {(ac, UIView, success) in
-            let toDoo = self.fetechedResultsController.object(at: at)
-            
-            toDoo.terminado = true
-            
-            do {
-                try self.contexto.save()
-            } catch {}
-            
-            success(true)
-        })
-        complete.backgroundColor = UIColor(named: "green-checked")
-        complete.image = ImageHelper.scaled(named: "checkmark", width: 30, height: 30)
-        return complete
-    }
-    
+//    func completeAction(at : IndexPath) -> UIContextualAction {
+//        let complete = UIContextualAction(style: .normal, title: nil, handler: {(ac, UIView, success) in
+//            let toDoo = self.fetechedResultsController.object(at: at)
+//
+//            toDoo.terminado = true
+//
+//            do {
+//                try self.contexto.save()
+//            } catch {}
+//
+//            success(true)
+//        })
+//        complete.backgroundColor = UIColor(named: "green-checked")
+//        complete.image = ImageHelper.scaled(named: "checkmark", width: 30, height: 30)
+//        return complete
+//    }
+//
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let edit = editAction(at: indexPath)
-        let complete = completeAction(at: indexPath)
+//        let complete = completeAction(at: indexPath)
         edit.backgroundColor = .brown
-        let configuration = UISwipeActionsConfiguration(actions: [edit, complete])
+        let configuration = UISwipeActionsConfiguration(actions: [edit])
         return configuration
     }
-    			
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+    }
 }
