@@ -69,6 +69,7 @@ class ToDooItemTableViewController: UIViewController, UITableViewDataSource, UIT
         let cell = tvToDooItem.dequeueReusableCell(withIdentifier: "toDooItemCell") as! ToDooItemCell
 
         configureCell(cell, at: indexPath)
+    
         return cell
     }
     
@@ -77,6 +78,63 @@ class ToDooItemTableViewController: UIViewController, UITableViewDataSource, UIT
         
         cell.lblTitulo.text = toDooItem.titulo
         cell.lblDescricao.text = toDooItem.descricao
+        cell.vStatus.backgroundColor = toDooItem!.status ? #colorLiteral(red: 0, green: 0.8457566353, blue: 0, alpha: 1) : #colorLiteral(red: 1, green: 0, blue: 0, alpha: 1)
+   
+    }
+    
+    func deleteAction(at: IndexPath) -> UIContextualAction {
+        let delete = UIContextualAction(style: .destructive, title: nil, handler: { (ac, UIView, success) in
+            let toDooItem = self.toDooSelecionado?.itens?[at.row] as? ToDooItem
+            
+            self.toDooSelecionado?.managedObjectContext?.delete(toDooItem!)
+            
+            do {
+                try self.contexto.save()
+            } catch {}
+            success(true)
+        })
+        delete.image = ImageHelper.scaled(named: "trash", width: 30, height: 30)
+        return delete
+    }
+    
+    
+    func completeAction(at : IndexPath) -> UIContextualAction {
+        let toDooItem = self.toDooSelecionado?.itens![at.row] as? ToDooItem
+        let complete = UIContextualAction(style: .normal, title: nil, handler: {(ac, UIView, success) in
+            
+            toDooItem!.status = !toDooItem!.status
+            
+            do {
+                try self.contexto.save()
+            } catch {}
+            
+            success(true)
+            self.tvToDooItem.reloadData()
+        })
+        
+        if toDooItem!.status {
+            complete.backgroundColor = #colorLiteral(red: 1, green: 0, blue: 0, alpha: 1)
+            complete.image = ImageHelper.scaled(named: "cross", width: 30, height: 30)
+            
+        }
+        else {
+            complete.backgroundColor = UIColor(named: "green-checked")
+            complete.image = ImageHelper.scaled(named: "checkmark", width: 30, height: 30)
+        }
+        
+        return complete
+    }
+    
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let complete = completeAction(at: indexPath)
+        let configuration = UISwipeActionsConfiguration(actions: [complete])
+        return configuration
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = deleteAction(at: indexPath)
+        let configuration = UISwipeActionsConfiguration(actions: [delete])
+        return configuration
     }
     
     override func viewDidLoad() {
