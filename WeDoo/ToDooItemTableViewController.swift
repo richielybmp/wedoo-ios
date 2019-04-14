@@ -29,7 +29,7 @@ class ToDooItemTableViewController: UIViewController, UITableViewDataSource, UIT
         let fetchRequest: NSFetchRequest<ToDooItem> = ToDooItem.fetchRequest()
         
         //Configura Fetch Request para ordenar pela data de encerramento
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "createdate", ascending: true)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "criado_em", ascending: true)]
         
         fetchRequest.predicate = NSPredicate(format: "toDoo.id == %@", self.toDooSelecionado!.id!)
         
@@ -78,7 +78,7 @@ class ToDooItemTableViewController: UIViewController, UITableViewDataSource, UIT
         
         cell.lblTitulo.text = toDooItem.titulo
         cell.lblDescricao.text = toDooItem.descricao
-        cell.vStatus.backgroundColor = toDooItem!.status ? #colorLiteral(red: 0, green: 0.8457566353, blue: 0, alpha: 1) : #colorLiteral(red: 1, green: 0, blue: 0, alpha: 1)
+        cell.vStatus.backgroundColor = toDooItem.status ? #colorLiteral(red: 0, green: 0.8457566353, blue: 0, alpha: 1) : #colorLiteral(red: 1, green: 0, blue: 0, alpha: 1)
    
     }
     

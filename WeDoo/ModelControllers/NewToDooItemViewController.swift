@@ -91,7 +91,7 @@ UINavigationControllerDelegate{
             let toDooItem = self.toDooItemSelecionado ?? { () -> ToDooItem in
                 let toDooItem = ToDooItem(context: managedObjectContext)
                 toDooItem.id = UUID().uuidString
-                toDooItem.createdate = Date()
+                toDooItem.criado_em = Date()
                 toDooItem.toDoo = toDooSelecionado
                 return toDooItem
                 }()
