@@ -101,7 +101,7 @@ class NewToDooItemViewController:
             else {
                 toDooItem.status = false
                 toDooItem.id = UUID().uuidString
-                toDooItem.createdate = Date()
+                toDooItem.criado_em = Date()
                 
                 toDooSelecionado?.addToItens(toDooItem)
             }

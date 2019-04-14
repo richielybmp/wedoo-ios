@@ -128,12 +128,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         return delete
     }
     
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let delete = deleteAction(at: indexPath)
-        let configuration = UISwipeActionsConfiguration(actions: [delete])
-        return configuration
-    }
-    
+
     func editAction(at: IndexPath) -> UIContextualAction {
         let edit = UIContextualAction(style: .normal, title: nil, handler: { (ac, UIView, success) in
             self.toDooAux = self.fetechedResultsController.object(at: at)
@@ -144,29 +139,17 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         return edit
     }
     
-    func completeAction(at : IndexPath) -> UIContextualAction {
-        let complete = UIContextualAction(style: .normal, title: nil, handler: {(ac, UIView, success) in
-            let toDoo = self.fetechedResultsController.object(at: at)
-            
-            toDoo.terminado = true
-            
-            do {
-                try self.contexto.save()
-            } catch {}
-            
-            success(true)
-        })
-        complete.backgroundColor = UIColor(named: "green-checked")
-        complete.image = ImageHelper.scaled(named: "checkmark", width: 30, height: 30)
-        return complete
-    }
-    
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let edit = editAction(at: indexPath)
-        let complete = completeAction(at: indexPath)
         edit.backgroundColor = .brown
-        let configuration = UISwipeActionsConfiguration(actions: [edit, complete])
+        let configuration = UISwipeActionsConfiguration(actions: [edit])
         return configuration
     }
-    			
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = deleteAction(at: indexPath)
+        let configuration = UISwipeActionsConfiguration(actions: [delete])
+        return configuration
+    }
+
 }

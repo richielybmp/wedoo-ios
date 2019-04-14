@@ -762,11 +762,11 @@
             </objects>
             <point key="canvasLocation" x="1924" y="31"/>
         </scene>
-        <!--Item-->
+        <!--ToDoo-->
         <scene sceneID="p3x-0t-DWW">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uYP-KL-Gfd" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="todo-icon" selectedImage="todo-icon" id="AXQ-aB-GKi"/>
+                    <tabBarItem key="tabBarItem" title="ToDoo" image="todo-icon" selectedImage="todo-icon" id="AXQ-aB-GKi"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="PNF-er-wyF">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -807,21 +807,32 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Título Item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mWJ-hn-M8C">
-                                                    <rect key="frame" x="20" y="26" width="93" height="24"/>
+                                                    <rect key="frame" x="45" y="26" width="93" height="24"/>
                                                     <fontDescription key="fontDescription" type="italicSystem" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Descrição Item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WWi-Ep-hK0">
-                                                    <rect key="frame" x="20" y="55" width="115" height="21"/>
+                                                    <rect key="frame" x="45" y="55" width="285" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b9G-DX-mv0">
+                                                    <rect key="frame" x="0.0" y="0.0" width="15" height="99.5"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="15" id="uQx-jz-297"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="mWJ-hn-M8C" firstAttribute="leading" secondItem="zgX-wi-Wce" secondAttribute="leadingMargin" constant="5" id="e1D-iL-iXh"/>
-                                                <constraint firstItem="WWi-Ep-hK0" firstAttribute="leading" secondItem="zgX-wi-Wce" secondAttribute="leadingMargin" constant="5" id="ezf-pP-977"/>
+                                                <constraint firstAttribute="bottom" secondItem="b9G-DX-mv0" secondAttribute="bottom" id="4WX-gK-MtY"/>
+                                                <constraint firstItem="WWi-Ep-hK0" firstAttribute="leading" secondItem="b9G-DX-mv0" secondAttribute="trailing" constant="30" id="FlO-Gq-n3q"/>
+                                                <constraint firstItem="WWi-Ep-hK0" firstAttribute="centerX" secondItem="zgX-wi-Wce" secondAttribute="centerX" id="Ni4-Qs-2sV"/>
+                                                <constraint firstItem="b9G-DX-mv0" firstAttribute="leading" secondItem="zgX-wi-Wce" secondAttribute="leading" id="UAw-Qf-18O"/>
+                                                <constraint firstItem="mWJ-hn-M8C" firstAttribute="leading" secondItem="b9G-DX-mv0" secondAttribute="trailing" constant="30" id="UBx-Ni-uV9"/>
+                                                <constraint firstItem="b9G-DX-mv0" firstAttribute="top" secondItem="zgX-wi-Wce" secondAttribute="top" id="fR8-z5-0k3"/>
                                                 <constraint firstItem="WWi-Ep-hK0" firstAttribute="top" secondItem="mWJ-hn-M8C" secondAttribute="bottom" constant="5" id="lhU-wD-G6q"/>
                                                 <constraint firstItem="mWJ-hn-M8C" firstAttribute="top" secondItem="zgX-wi-Wce" secondAttribute="topMargin" constant="15" id="tOb-4K-1Su"/>
                                             </constraints>
@@ -829,10 +840,15 @@
                                         <connections>
                                             <outlet property="lblDescricao" destination="WWi-Ep-hK0" id="KB1-Hj-Jq0"/>
                                             <outlet property="lblTitulo" destination="mWJ-hn-M8C" id="tKl-YK-3Wg"/>
+                                            <outlet property="vStatus" destination="b9G-DX-mv0" id="9KP-Gs-EjQ"/>
                                             <segue destination="4Gn-cQ-dLL" kind="show" identifier="SegueEditToDooItem" id="o87-HZ-QG7"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="OsQ-Z4-BlU" id="fOd-Md-9ds"/>
+                                    <outlet property="delegate" destination="OsQ-Z4-BlU" id="Y59-Lm-Dpg"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -863,7 +879,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s0Q-RL-M5F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3828" y="1217"/>
+            <point key="canvasLocation" x="3828" y="1216.6416791604199"/>
         </scene>
         <!--Novo ToDoo Item-->
         <scene sceneID="Lfq-Iy-11A">
@@ -947,5 +963,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="o87-HZ-QG7"/>
+        <segue reference="Ayj-pF-cq6"/>
     </inferredMetricsTieBreakers>
 </document>
