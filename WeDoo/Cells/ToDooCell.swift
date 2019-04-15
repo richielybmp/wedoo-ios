@@ -14,6 +14,7 @@ class ToDooCell: UITableViewCell {
     
     @IBOutlet weak var lblDescricao: UILabel!
     
+    @IBOutlet weak var lblItens: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -13,19 +13,28 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     private let segueAddToDooViewController = "SegueAddToDooViewController"
     private let segueEditToDoo = "SegueEditToDoo"
-    
     private let segueOpenToDooItemList = "SegueOpenToDooItemList"
     
-    @IBOutlet weak var tvTableToDoo: UITableView!
-
-    @IBOutlet weak var lblMessage: UILabel!
-    
     private var toDooAux: ToDoo?
+    
+    @IBOutlet weak var tvTableToDoo: UITableView!
+    @IBOutlet weak var lblMessage: UILabel!
     
     var contexto: NSManagedObjectContext {
         let delegate = UIApplication.shared.delegate as! AppDelegate
         
         return delegate.persistentContainer.viewContext
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        do {
+            //Tenta fazer o fetch de ToDoos
+            try self.fetechedResultsController.performFetch();
+        } catch (let error) {
+            self.showAlert(for: error.localizedDescription)
+        }
+        self.updateView();
     }
     
     fileprivate lazy var fetechedResultsController : NSFetchedResultsController<ToDoo> = {
@@ -57,14 +66,16 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         return cell
     }
     
-    func configureCell(_ cell : ToDooCell, at : IndexPath) {
+    func configureCell(_ cell : ToDooCell, at : IndexPath){
         let toDoo = fetechedResultsController.object(at: at)
         
         cell.lblTitulo.text = toDoo.titulo
         cell.lblDescricao.text = toDoo.descricao
         
+        let qtdItens = toDoo.itens?.count
+        let label = qtdItens! < 2 ? " item" : " itens"
+        cell.lblItens.text = qtdItens!.description + label
     }
-    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -81,20 +92,8 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         tvTableToDoo.isHidden = !hasToDoos
         lblMessage.isHidden = hasToDoos
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        do {
-            //Tenta fazer o fetch de ToDoos
-            try self.fetechedResultsController.performFetch();
-        } catch (let error) {
-            self.showAlert(for: error.localizedDescription)
-        }
-        self.updateView();
-    }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if segue.identifier == segueAddToDooViewController {
             if let destinationViewController = segue.destination as?  NewToDooViewController {
                 destinationViewController.managedObjectContext = contexto
@@ -128,7 +127,6 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         return delete
     }
     
-
     func editAction(at: IndexPath) -> UIContextualAction {
         let edit = UIContextualAction(style: .normal, title: nil, handler: { (ac, UIView, success) in
             self.toDooAux = self.fetechedResultsController.object(at: at)

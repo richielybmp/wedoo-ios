@@ -11,13 +11,8 @@ import Firebase
 
 class SignUpViewController: UIViewController {
 
-    @IBOutlet weak var tfUserName: UITextField!
-    
     @IBOutlet weak var tfEmail: UITextField!
-    
     @IBOutlet weak var tfPassword: UITextField!
-    
-    let mainSb = UIStoryboard(name: "Main", bundle: nil)
     
     var spinner:UIActivityIndicatorView = UIActivityIndicatorView()
     
@@ -40,7 +35,7 @@ class SignUpViewController: UIViewController {
             if error == nil {
                 Auth.auth().signIn(withEmail: email!, password: senha!, completion: { (user, error) in
                     if error == nil {
-                        let homeVc = self.mainSb.instantiateViewController(withIdentifier: "TabHomeScreen") as! UITabBarController
+                        let homeVc = self.storyboard?.instantiateViewController(withIdentifier: "TabHomeScreen") as! UITabBarController
                         self.present(homeVc, animated: true, completion: nil)                        
                     }
                     else {
@@ -61,32 +56,32 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func handleSignInClicked(_ sender: UIButton) {
-        let signInVc = mainSb.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
+        let signInVc = storyboard?.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
         let navigationVc = UINavigationController(rootViewController: signInVc)
         present(navigationVc, animated: true, completion: nil)
     }
     
     private func showSpinner(show: Bool){
         if (show){
-            self.spinner.startAnimating()
+            spinner.startAnimating()
             UIApplication.shared.beginIgnoringInteractionEvents()
         }
         else{
-            self.spinner.stopAnimating()
+            spinner.stopAnimating()
             UIApplication.shared.endIgnoringInteractionEvents()
         }
     }
     
     private func criaSpinner(){
-        self.spinner.center = self.view.center
-        self.spinner.hidesWhenStopped = true
-        self.spinner.style = UIActivityIndicatorView.Style.gray
+        spinner.center = self.view.center
+        spinner.hidesWhenStopped = true
+        spinner.style = UIActivityIndicatorView.Style.gray
         
         view.addSubview(spinner)
     }
     
     @objc func closeBackButtonPressed(){
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 
 }

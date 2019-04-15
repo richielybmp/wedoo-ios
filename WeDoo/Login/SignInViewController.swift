@@ -12,7 +12,6 @@ import Firebase
 class SignInViewController: UIViewController {
 
     @IBOutlet weak var tfEmail: UITextField!
-    
     @IBOutlet weak var tfPassword: UITextField!
     
      var spinner:UIActivityIndicatorView = UIActivityIndicatorView()
@@ -26,10 +25,11 @@ class SignInViewController: UIViewController {
     }
     
     @IBAction func handleSignInClicked(_ sender: UIButton) {
-        
         let email = tfEmail.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         let senha = tfPassword.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        
         showSpinner(show: true)
+        
         Auth.auth().signIn(withEmail: email!, password: senha!, completion: { (user, error) in
             if error == nil {
                 let homeVc = self.storyboard?.instantiateViewController(withIdentifier: "TabHomeScreen") as! UITabBarController
@@ -46,25 +46,25 @@ class SignInViewController: UIViewController {
     
     private func showSpinner(show: Bool){
         if (show){
-            self.spinner.startAnimating()
+            spinner.startAnimating()
             UIApplication.shared.beginIgnoringInteractionEvents()
         }
         else{
-            self.spinner.stopAnimating()
+            spinner.stopAnimating()
             UIApplication.shared.endIgnoringInteractionEvents()
         }
     }
     
     private func criaSpinner(){
-        self.spinner.center = self.view.center
-        self.spinner.hidesWhenStopped = true
-        self.spinner.style = UIActivityIndicatorView.Style.gray
+        spinner.center = self.view.center
+        spinner.hidesWhenStopped = true
+        spinner.style = UIActivityIndicatorView.Style.gray
         
         view.addSubview(spinner)
     }
     
     @objc func closeBackButtonPressed(){
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 
 }

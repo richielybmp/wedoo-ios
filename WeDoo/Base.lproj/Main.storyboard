@@ -233,6 +233,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J9Z-SE-X8c">
                                 <rect key="frame" x="159" y="241" width="57" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Sign out"/>
                                 <connections>
                                     <action selector="signOutClick:" destination="fiq-X7-dl3" eventType="touchUpInside" id="5Bd-ZC-c9z"/>
@@ -298,15 +299,21 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titulo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W4X-Uy-TZT">
-                                                    <rect key="frame" x="20" y="26" width="50" height="24"/>
-                                                    <fontDescription key="fontDescription" type="italicSystem" pointSize="20"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Descrição" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0AN-eh-DgE">
+                                                    <rect key="frame" x="20" y="47.5" width="69" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Descrição" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0AN-eh-DgE">
-                                                    <rect key="frame" x="20" y="55" width="77" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 itens" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v0t-bU-P5H">
+                                                    <rect key="frame" x="20" y="70.5" width="53.5" height="18"/>
+                                                    <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Titulo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W4X-Uy-TZT">
+                                                    <rect key="frame" x="20" y="13" width="69" height="24"/>
+                                                    <fontDescription key="fontDescription" type="italicSystem" pointSize="22"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -315,11 +322,14 @@
                                                 <constraint firstItem="0AN-eh-DgE" firstAttribute="top" secondItem="W4X-Uy-TZT" secondAttribute="bottom" constant="5" id="17t-Cx-sPc"/>
                                                 <constraint firstItem="W4X-Uy-TZT" firstAttribute="leading" secondItem="R7r-gY-7qK" secondAttribute="leadingMargin" constant="5" id="2eY-jM-nUA"/>
                                                 <constraint firstItem="0AN-eh-DgE" firstAttribute="leading" secondItem="R7r-gY-7qK" secondAttribute="leadingMargin" constant="5" id="4Jc-bj-Mg8"/>
-                                                <constraint firstItem="W4X-Uy-TZT" firstAttribute="top" secondItem="R7r-gY-7qK" secondAttribute="topMargin" constant="15" id="xE4-Tc-USL"/>
+                                                <constraint firstItem="v0t-bU-P5H" firstAttribute="top" secondItem="0AN-eh-DgE" secondAttribute="bottom" constant="5" id="92Z-bV-grg"/>
+                                                <constraint firstItem="v0t-bU-P5H" firstAttribute="leading" secondItem="0AN-eh-DgE" secondAttribute="leading" id="Nas-73-9V0"/>
+                                                <constraint firstItem="W4X-Uy-TZT" firstAttribute="top" secondItem="R7r-gY-7qK" secondAttribute="topMargin" constant="5" id="xE4-Tc-USL"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="lblDescricao" destination="0AN-eh-DgE" id="UBU-l7-3Oh"/>
+                                            <outlet property="lblItens" destination="v0t-bU-P5H" id="HCe-YF-Xsc"/>
                                             <outlet property="lblTitulo" destination="W4X-Uy-TZT" id="dD0-ha-vNt"/>
                                             <segue destination="OsQ-Z4-BlU" kind="show" identifier="SegueOpenToDooItemList" id="q3c-tq-6rR"/>
                                         </connections>
@@ -360,7 +370,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aRZ-qi-2ou" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2593" y="779"/>
+            <point key="canvasLocation" x="2592.8000000000002" y="778.56071964017997"/>
         </scene>
         <!--Novo ToDoo-->
         <scene sceneID="Y1u-4w-tnb">

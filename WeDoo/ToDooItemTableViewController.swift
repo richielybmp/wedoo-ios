@@ -11,8 +11,9 @@ import CoreData
 
 class ToDooItemTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    let segueAddToDooItem = "SegueAddToDooItem"
-    let segueEditToDooItem = "SegueEditToDooItem"
+    private let segueAddToDooItem = "SegueAddToDooItem"
+    private let segueEditToDooItem = "SegueEditToDooItem"
+    
     var toDooSelecionado: ToDoo?
     
     @IBOutlet weak var tvToDooItem: UITableView!
@@ -22,6 +23,18 @@ class ToDooItemTableViewController: UIViewController, UITableViewDataSource, UIT
         let delegate = UIApplication.shared.delegate as! AppDelegate
         
         return delegate.persistentContainer.viewContext
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.title = toDooSelecionado?.titulo
+        do {
+            //Tenta fazer o fetch de ToDoos
+            try self.fetchedResultsController.performFetch();
+        } catch (let error) {
+            self.showAlert(for: error.localizedDescription)
+        }
+        self.updateView();
     }
     
     fileprivate lazy var fetchedResultsController : NSFetchedResultsController<ToDooItem> = {
@@ -41,9 +54,7 @@ class ToDooItemTableViewController: UIViewController, UITableViewDataSource, UIT
         
         return fetchedResultsController
     }()
-    
-    
-    
+
     //Mostra label se nao houver ToDoos
     func updateView(){
         var hasToDooItens = false
@@ -85,7 +96,7 @@ class ToDooItemTableViewController: UIViewController, UITableViewDataSource, UIT
     func deleteAction(at: IndexPath) -> UIContextualAction {
         let delete = UIContextualAction(style: .destructive, title: nil, handler: { (ac, UIView, success) in
             let toDooItem = self.toDooSelecionado?.itens?[at.row] as? ToDooItem
-            
+ 
             self.toDooSelecionado?.managedObjectContext?.delete(toDooItem!)
             
             do {
@@ -96,7 +107,6 @@ class ToDooItemTableViewController: UIViewController, UITableViewDataSource, UIT
         delete.image = ImageHelper.scaled(named: "trash", width: 30, height: 30)
         return delete
     }
-    
     
     func completeAction(at : IndexPath) -> UIContextualAction {
         let toDooItem = self.toDooSelecionado?.itens![at.row] as? ToDooItem
@@ -135,18 +145,6 @@ class ToDooItemTableViewController: UIViewController, UITableViewDataSource, UIT
         let delete = deleteAction(at: indexPath)
         let configuration = UISwipeActionsConfiguration(actions: [delete])
         return configuration
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.title = toDooSelecionado?.titulo
-        do {
-            //Tenta fazer o fetch de ToDoos
-            try self.fetchedResultsController.performFetch();
-        } catch (let error) {
-            self.showAlert(for: error.localizedDescription)
-        }
-        self.updateView();
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

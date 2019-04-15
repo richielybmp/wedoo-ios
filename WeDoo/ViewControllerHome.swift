@@ -18,13 +18,12 @@ class ViewControllerHome: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let userMail = Auth.auth().currentUser?.email
+        
         if let userPhoto = Auth.auth().currentUser?.photoURL
         {
             setProfileImage(userPhoto)
         }
         labelWelcome.text = "Bem vindo, \(userMail ?? "< mail@mailo.com>")"
-        
-
     }
 
     func setProfileImage (_ imageURL: URL){
@@ -37,10 +36,9 @@ class ViewControllerHome: UIViewController {
         let firebaseAuth = Auth.auth()
         do {
             try firebaseAuth.signOut()
-//            print("Log out com sucesso!")
             dismiss(animated: true, completion: nil)
         } catch let signOutError as NSError {
-//            print ("Error signing out: %@", signOutError)
+            print ("Error signing out: %@", signOutError)
         }
     }
     

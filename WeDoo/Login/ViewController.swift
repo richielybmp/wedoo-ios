@@ -15,8 +15,6 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
 
     var spinner:UIActivityIndicatorView = UIActivityIndicatorView()
     
-    //let mainSb = UIStoryboard(name: "Main", bundle: nil)
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,7 +22,6 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().uiDelegate = self
         
-        //GIDSignIn.sharedInstance().signIn()
         criaSpinner()
         checkIfUserIsSignedIn()
     }
@@ -46,8 +43,6 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
                 self.showSpinner(show:false)
                 return
             }
-            //print("Autenticação feita com sucesso!!! \(authResult?.user.displayName)")
-            //self.abrirHome()
             self.showSpinner(show:false)
             return
         }
@@ -57,14 +52,12 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         let signUpVc = storyboard?.instantiateViewController(withIdentifier: "SignUpViewController") as! SignUpViewController
         let navigationVc = UINavigationController(rootViewController: signUpVc)
         present(navigationVc, animated: true, completion: nil)
-        //navigationVc.pushViewController(signUpVc, animated: true)
     }
     
     @IBAction func openSignInScreen(_ sender: UIButton) {
         let signInVc = storyboard?.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
         let navigationVc = UINavigationController(rootViewController: signInVc)
         present(navigationVc, animated: true, completion: nil)
-        //navigationVc.pushViewController(signInVc, animated: true)
     }
     
     private func checkIfUserIsSignedIn() {
@@ -79,25 +72,24 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
 
     private func showSpinner(show: Bool){
         if (show){
-            self.spinner.startAnimating()
+            spinner.startAnimating()
             UIApplication.shared.beginIgnoringInteractionEvents()
         }
         else{
-            self.spinner.stopAnimating()
+            spinner.stopAnimating()
             UIApplication.shared.endIgnoringInteractionEvents()
         }
     }
     
     private func criaSpinner(){
-        self.spinner.center = self.view.center
-        self.spinner.hidesWhenStopped = true
-        self.spinner.style = UIActivityIndicatorView.Style.gray
+        spinner.center = self.view.center
+        spinner.hidesWhenStopped = true
+        spinner.style = UIActivityIndicatorView.Style.gray
         
         view.addSubview(spinner)
     }
     
     private func abrirHome(){
-        //self.performSegue(withIdentifier: "showHomeSegue", sender: self)
         let signInVc = storyboard?.instantiateViewController(withIdentifier: "TabHomeScreen") as! UITabBarController
         present(signInVc, animated: true, completion: nil)
     }
@@ -105,12 +97,6 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     private func showAlert(_ acTitle: String, _ aaTitle: String, error: Error){
         let alert = UIAlertController(title: acTitle, message: error.localizedDescription, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: aaTitle, style: .default))
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
 }
-
-
-// todo:
-// fazer login with email e senha
-// fazer navigation controller
-// fazer profile

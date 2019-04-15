@@ -28,7 +28,7 @@ UINavigationControllerDelegate{
         if let toDooItemSelecionado = toDooItemSelecionado {
             tfTitle.text = toDooItemSelecionado.titulo
             tfDescription.text = toDooItemSelecionado.descricao
-            vrImageViewToDooItem.image = toDooItemSelecionado.imagem as! UIImage
+            vrImageViewToDooItem.image = toDooItemSelecionado.imagem as? UIImage
             let titulo = toDooItemSelecionado.titulo
             self.title = "Editar \(titulo ?? "ToDoo Item")"
         }
