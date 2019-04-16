@@ -6,6 +6,7 @@ target 'WeDoo' do
   use_frameworks!
 
   # Pods for WeDoo
+  pod 'TTGSnackbar'
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'GoogleSignIn'

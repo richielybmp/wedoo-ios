@@ -74,12 +74,14 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - TTGSnackbar (1.7.5)
 
 DEPENDENCIES:
   - AlamofireImage (~> 3.3)
   - Firebase/Auth
   - Firebase/Core
   - GoogleSignIn
+  - TTGSnackbar
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -97,6 +99,7 @@ SPEC REPOS:
     - GoogleUtilities
     - GTMSessionFetcher
     - nanopb
+    - TTGSnackbar
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
@@ -113,7 +116,8 @@ SPEC CHECKSUMS:
   GoogleUtilities: 273e67030e0de313e7304f6dcfa96fc5214f6c23
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  TTGSnackbar: 2cf4e7b6ffbe5cddf248a73f3ee952b71bee8ea3
 
-PODFILE CHECKSUM: 5aef2a133cf1ab5825e5a619db3f9df48ee9dd7e
+PODFILE CHECKSUM: 4845e0ee7948e33c23d408c6bb565556e829766e
 
 COCOAPODS: 1.6.1

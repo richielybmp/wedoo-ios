@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import TTGSnackbar
 
 class TableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -22,13 +23,13 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     var contexto: NSManagedObjectContext {
         let delegate = UIApplication.shared.delegate as! AppDelegate
-        
         return delegate.persistentContainer.viewContext
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         do {
+            contexto.undoManager = UndoManager()
             //Tenta fazer o fetch de ToDoos
             try self.fetechedResultsController.performFetch();
         } catch (let error) {
@@ -49,6 +50,8 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         //Metodos implementados em Utils/TableViewController+...
         fetchedResultsController.delegate = self
+        
+        
         
         return fetchedResultsController
     }()
@@ -117,10 +120,19 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     func deleteAction(at: IndexPath) -> UIContextualAction {
         let delete = UIContextualAction(style: .destructive, title: nil, handler: { (ac, UIView, success) in
             let toDoo = self.fetechedResultsController.object(at: at)
-            toDoo.managedObjectContext?.delete(toDoo)
+            self.contexto.delete(toDoo)
             do {
+                let snackbar = TTGSnackbar(message: toDoo.titulo! + " Excluído", duration: .middle)
+                
                 try self.contexto.save()
-            } catch {}
+                
+                snackbar.actionText = "Desfazer"
+                snackbar.actionTextColor = .white
+                snackbar.actionBlock = { (snackbar) in self.contexto.undo() }
+                snackbar.show()
+            } catch {
+                print("\(error.localizedDescription)")
+            }
             success(true)
         })
         delete.image = ImageHelper.scaled(named: "trash", width: 30, height: 30)

@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import TTGSnackbar
 
 class ToDooItemTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -29,7 +30,6 @@ class ToDooItemTableViewController: UIViewController, UITableViewDataSource, UIT
         super.viewDidLoad()
         self.title = toDooSelecionado?.titulo
         do {
-            //Tenta fazer o fetch de ToDoos
             try self.fetchedResultsController.performFetch();
         } catch (let error) {
             self.showAlert(for: error.localizedDescription)
@@ -95,13 +95,21 @@ class ToDooItemTableViewController: UIViewController, UITableViewDataSource, UIT
     
     func deleteAction(at: IndexPath) -> UIContextualAction {
         let delete = UIContextualAction(style: .destructive, title: nil, handler: { (ac, UIView, success) in
-            let toDooItem = self.toDooSelecionado?.itens?[at.row] as? ToDooItem
+            let toDooItem = self.fetchedResultsController.object(at: at)
  
-            self.toDooSelecionado?.managedObjectContext?.delete(toDooItem!)
-            
+            self.contexto.delete(toDooItem)
             do {
+                let snackbar = TTGSnackbar(message: toDooItem.titulo! + " Excluído", duration: .middle)
+                
                 try self.contexto.save()
-            } catch {}
+                
+                snackbar.actionText = "Desfazer"
+                snackbar.actionTextColor = .white
+                snackbar.actionBlock = { (snackbar) in self.contexto.undo() }
+                snackbar.show()
+            } catch {
+                print("\(error.localizedDescription)")
+            }
             success(true)
         })
         delete.image = ImageHelper.scaled(named: "trash", width: 30, height: 30)
@@ -109,10 +117,10 @@ class ToDooItemTableViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     func completeAction(at : IndexPath) -> UIContextualAction {
-        let toDooItem = self.toDooSelecionado?.itens![at.row] as? ToDooItem
+        let toDooItem = self.fetchedResultsController.object(at: at)
         let complete = UIContextualAction(style: .normal, title: nil, handler: {(ac, UIView, success) in
             
-            toDooItem!.status = !toDooItem!.status
+            toDooItem.status = !toDooItem.status
             
             do {
                 try self.contexto.save()
@@ -122,15 +130,9 @@ class ToDooItemTableViewController: UIViewController, UITableViewDataSource, UIT
             self.tvToDooItem.reloadData()
         })
         
-        if toDooItem!.status {
-            complete.backgroundColor = #colorLiteral(red: 1, green: 0, blue: 0, alpha: 1)
-            complete.image = ImageHelper.scaled(named: "cross", width: 30, height: 30)
-            
-        }
-        else {
-            complete.backgroundColor = UIColor(named: "green-checked")
-            complete.image = ImageHelper.scaled(named: "checkmark", width: 30, height: 30)
-        }
+        complete.backgroundColor = toDooItem.status ? .red : UIColor(named: "green-checked")
+        
+        complete.image = ImageHelper.scaled(named: toDooItem.status ? "cross" : "checkmark", width: 30, height: 30)
         
         return complete
     }
