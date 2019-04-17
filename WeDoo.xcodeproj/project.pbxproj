@@ -18,6 +18,7 @@
 		878D415C2261288B00E03083 /* NewToDooItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878D415B2261288B00E03083 /* NewToDooItemViewController.swift */; };
 		878D41602262304500E03083 /* ToDooItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878D415F2262304500E03083 /* ToDooItemCell.swift */; };
 		878D41622262481900E03083 /* ToDooItemTableViewControllerNFRCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878D41612262481900E03083 /* ToDooItemTableViewControllerNFRCDelegate.swift */; };
+		87C51F43226694FC00D4C204 /* AppManagedContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C51F42226694FC00D4C204 /* AppManagedContext.swift */; };
 		87D87D472253F01C00CB4C7C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D87D462253F01C00CB4C7C /* SignUpViewController.swift */; };
 		87D87D492253F1AF00CB4C7C /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D87D482253F1AF00CB4C7C /* SignInViewController.swift */; };
 		87DC2E7E225925BF007A2E3B /* NewToDooViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DC2E7D225925BF007A2E3B /* NewToDooViewController.swift */; };
@@ -49,6 +50,7 @@
 		878D415F2262304500E03083 /* ToDooItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDooItemCell.swift; sourceTree = "<group>"; };
 		878D41612262481900E03083 /* ToDooItemTableViewControllerNFRCDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDooItemTableViewControllerNFRCDelegate.swift; sourceTree = "<group>"; };
 		87AC30AD2254FF5000E86920 /* WeDoo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WeDoo.entitlements; sourceTree = "<group>"; };
+		87C51F42226694FC00D4C204 /* AppManagedContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManagedContext.swift; sourceTree = "<group>"; };
 		87D87D462253F01C00CB4C7C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		87D87D482253F1AF00CB4C7C /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		87DC2E7D225925BF007A2E3B /* NewToDooViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewToDooViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				87AC30AD2254FF5000E86920 /* WeDoo.entitlements */,
 				8780A2BB225274A6004F5484 /* AppDelegate.swift */,
 				8722EFB8225286CB00CF2D62 /* ViewControllerHome.swift */,
+				87C51F42226694FC00D4C204 /* AppManagedContext.swift */,
 				8780A2BF225274A6004F5484 /* Main.storyboard */,
 				8780A2C2225274A7004F5484 /* Assets.xcassets */,
 				8780A2C4225274A7004F5484 /* LaunchScreen.storyboard */,
@@ -216,6 +219,7 @@
 				TargetAttributes = {
 					8780A2B7225274A6004F5484 = {
 						CreatedOnToolsVersion = 10.2;
+						LastSwiftMigration = 1020;
 						SystemCapabilities = {
 							com.apple.Keychain = {
 								enabled = 1;
@@ -350,6 +354,7 @@
 				AF03F6CC225A5C6B00EDEFA4 /* Validator.swift in Sources */,
 				AF87D375225A8D95008EF24D /* TableViewController+NSFRCDelegate.swift in Sources */,
 				AF03F6D3225A648A00EDEFA4 /* UIViewController+Alert.swift in Sources */,
+				87C51F43226694FC00D4C204 /* AppManagedContext.swift in Sources */,
 				AF03F6D1225A60F500EDEFA4 /* UITextField+Validate.swift in Sources */,
 				8722EFB9225286CB00CF2D62 /* ViewControllerHome.swift in Sources */,
 				AF03F6C82259114900EDEFA4 /* WeDoo.xcdatamodeld in Sources */,

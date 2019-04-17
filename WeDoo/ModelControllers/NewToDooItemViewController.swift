@@ -18,7 +18,7 @@ UINavigationControllerDelegate{
     @IBOutlet weak var tfTitle: UITextField!
     @IBOutlet weak var tfDescription: UITextField!
     
-    var managedObjectContext: NSManagedObjectContext?
+    var contexto: NSManagedObjectContext = AppManagedContext.ManagedContext()
     var toDooSelecionado: ToDoo?
     var toDooItemSelecionado: ToDooItem?
     
@@ -76,8 +76,7 @@ UINavigationControllerDelegate{
         }
     }
     
-    func validate() -> Bool {
-        guard let managedObjectContext = managedObjectContext else { return false }
+    private func validate() -> Bool {
         var result = true
         
         do {
@@ -89,7 +88,7 @@ UINavigationControllerDelegate{
             
             //checa se o toDooItemSelecionado != nil, se nao ->
             let toDooItem = self.toDooItemSelecionado ?? { () -> ToDooItem in
-                let toDooItem = ToDooItem(context: managedObjectContext)
+                let toDooItem = ToDooItem(context: contexto)
                 toDooItem.id = UUID().uuidString
                 toDooItem.criado_em = Date()
                 toDooItem.toDoo = toDooSelecionado
@@ -100,7 +99,7 @@ UINavigationControllerDelegate{
             toDooItem.descricao = description
             toDooItem.imagem = itemImage
             
-            try managedObjectContext.save()
+            try contexto.save()
         }
         catch {
             result = false

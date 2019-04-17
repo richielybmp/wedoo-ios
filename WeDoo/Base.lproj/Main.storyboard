@@ -311,20 +311,20 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Titulo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W4X-Uy-TZT">
-                                                    <rect key="frame" x="20" y="13" width="69" height="24"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titulo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W4X-Uy-TZT">
+                                                    <rect key="frame" x="20" y="16" width="54.5" height="26.5"/>
                                                     <fontDescription key="fontDescription" type="italicSystem" pointSize="22"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="0AN-eh-DgE" firstAttribute="top" secondItem="W4X-Uy-TZT" secondAttribute="bottom" constant="5" id="17t-Cx-sPc"/>
-                                                <constraint firstItem="W4X-Uy-TZT" firstAttribute="leading" secondItem="R7r-gY-7qK" secondAttribute="leadingMargin" constant="5" id="2eY-jM-nUA"/>
-                                                <constraint firstItem="0AN-eh-DgE" firstAttribute="leading" secondItem="R7r-gY-7qK" secondAttribute="leadingMargin" constant="5" id="4Jc-bj-Mg8"/>
-                                                <constraint firstItem="v0t-bU-P5H" firstAttribute="top" secondItem="0AN-eh-DgE" secondAttribute="bottom" constant="5" id="92Z-bV-grg"/>
-                                                <constraint firstItem="v0t-bU-P5H" firstAttribute="leading" secondItem="0AN-eh-DgE" secondAttribute="leading" id="Nas-73-9V0"/>
-                                                <constraint firstItem="W4X-Uy-TZT" firstAttribute="top" secondItem="R7r-gY-7qK" secondAttribute="topMargin" constant="5" id="xE4-Tc-USL"/>
+                                                <constraint firstItem="W4X-Uy-TZT" firstAttribute="top" secondItem="R7r-gY-7qK" secondAttribute="topMargin" constant="5" id="52U-81-5s3"/>
+                                                <constraint firstItem="0AN-eh-DgE" firstAttribute="leading" secondItem="W4X-Uy-TZT" secondAttribute="leading" id="7ab-tj-4p6"/>
+                                                <constraint firstItem="v0t-bU-P5H" firstAttribute="top" secondItem="0AN-eh-DgE" secondAttribute="bottom" constant="5" id="UGu-kZ-5Ho"/>
+                                                <constraint firstItem="0AN-eh-DgE" firstAttribute="top" secondItem="W4X-Uy-TZT" secondAttribute="bottom" constant="5" id="iZc-vG-Zpy"/>
+                                                <constraint firstItem="W4X-Uy-TZT" firstAttribute="leading" secondItem="R7r-gY-7qK" secondAttribute="leadingMargin" constant="5" id="imV-UB-0rt"/>
+                                                <constraint firstItem="v0t-bU-P5H" firstAttribute="leading" secondItem="0AN-eh-DgE" secondAttribute="leading" id="mIJ-KD-oJO"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

@@ -20,11 +20,7 @@ class ToDooItemTableViewController: UIViewController, UITableViewDataSource, UIT
     @IBOutlet weak var tvToDooItem: UITableView!
     @IBOutlet weak var lblEmptyItemList: UILabel!
     
-    var contexto: NSManagedObjectContext {
-        let delegate = UIApplication.shared.delegate as! AppDelegate
-        
-        return delegate.persistentContainer.viewContext
-    }
+    var contexto: NSManagedObjectContext = AppManagedContext.ManagedContext()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,7 +101,13 @@ class ToDooItemTableViewController: UIViewController, UITableViewDataSource, UIT
                 
                 snackbar.actionText = "Desfazer"
                 snackbar.actionTextColor = .white
-                snackbar.actionBlock = { (snackbar) in self.contexto.undo() }
+                snackbar.actionBlock = { (snackbar) in self.contexto.undo();
+                    do {
+                        try self.contexto.save()
+                    } catch {
+                        print("\(error.localizedDescription)")
+                    }
+                }
                 snackbar.show()
             } catch {
                 print("\(error.localizedDescription)")
@@ -119,7 +121,6 @@ class ToDooItemTableViewController: UIViewController, UITableViewDataSource, UIT
     func completeAction(at : IndexPath) -> UIContextualAction {
         let toDooItem = self.fetchedResultsController.object(at: at)
         let complete = UIContextualAction(style: .normal, title: nil, handler: {(ac, UIView, success) in
-            
             toDooItem.status = !toDooItem.status
             
             do {
@@ -152,13 +153,11 @@ class ToDooItemTableViewController: UIViewController, UITableViewDataSource, UIT
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == segueAddToDooItem {
             if let destinationViewController = segue.destination as?  NewToDooItemViewController {
-                destinationViewController.managedObjectContext = contexto
                 destinationViewController.toDooSelecionado = self.toDooSelecionado
             }
         }
         else if segue.identifier == segueEditToDooItem {
             if let destinationViewController = segue.destination as? NewToDooItemViewController {
-                destinationViewController.managedObjectContext = contexto
                 destinationViewController.toDooSelecionado = self.toDooSelecionado
                 
                 let indexPath = self.tvToDooItem.indexPathForSelectedRow!

@@ -21,15 +21,11 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet weak var tvTableToDoo: UITableView!
     @IBOutlet weak var lblMessage: UILabel!
     
-    var contexto: NSManagedObjectContext {
-        let delegate = UIApplication.shared.delegate as! AppDelegate
-        return delegate.persistentContainer.viewContext
-    }
+    var contexto: NSManagedObjectContext = AppManagedContext.ManagedContext()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         do {
-            contexto.undoManager = UndoManager()
             //Tenta fazer o fetch de ToDoos
             try self.fetechedResultsController.performFetch();
         } catch (let error) {
@@ -50,8 +46,6 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         //Metodos implementados em Utils/TableViewController+...
         fetchedResultsController.delegate = self
-        
-        
         
         return fetchedResultsController
     }()
@@ -97,14 +91,9 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == segueAddToDooViewController {
-            if let destinationViewController = segue.destination as?  NewToDooViewController {
-                destinationViewController.managedObjectContext = contexto
-            }
-        } else if segue.identifier == segueEditToDoo {
+       if segue.identifier == segueEditToDoo {
             if let destinationViewController = segue.destination as?  NewToDooViewController {
                 destinationViewController.toDoo = toDooAux
-                destinationViewController.managedObjectContext = contexto
             }
         }
         else if segue.identifier == segueOpenToDooItemList {
@@ -128,7 +117,13 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
                 
                 snackbar.actionText = "Desfazer"
                 snackbar.actionTextColor = .white
-                snackbar.actionBlock = { (snackbar) in self.contexto.undo() }
+                snackbar.actionBlock = { (snackbar) in self.contexto.undo();
+                    do {
+                        try self.contexto.save()
+                    } catch {
+                        print("\(error.localizedDescription)")
+                    }
+                }
                 snackbar.show()
             } catch {
                 print("\(error.localizedDescription)")

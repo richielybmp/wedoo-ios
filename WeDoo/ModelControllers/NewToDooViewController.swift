@@ -20,7 +20,7 @@ class NewToDooViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     var toDoo: ToDoo?
     
-    var managedObjectContext: NSManagedObjectContext?
+    var contexto: NSManagedObjectContext = AppManagedContext.ManagedContext()
     
     func setup() {
         var title: String
@@ -73,8 +73,7 @@ class NewToDooViewController: UIViewController, UIPickerViewDataSource, UIPicker
         }
     }
     
-    func validate() -> Bool {
-        guard let managedObjectContext = managedObjectContext else { return false }
+    private func validate() -> Bool {
         var result = true
 
         do {
@@ -86,7 +85,7 @@ class NewToDooViewController: UIViewController, UIPickerViewDataSource, UIPicker
             
             //checa se o toDoo ja existe
             let toDoo = self.toDoo ?? { () -> ToDoo in
-                let toDoo = ToDoo(context: managedObjectContext)
+                let toDoo = ToDoo(context: contexto)
                 toDoo.id = UUID().uuidString
                 toDoo.criado_em = Date()
                 return toDoo
@@ -96,8 +95,7 @@ class NewToDooViewController: UIViewController, UIPickerViewDataSource, UIPicker
             toDoo.tipo = type
             toDoo.encerramento = encerramento
             
-            
-            try managedObjectContext.save()
+            try contexto.save()
             
         } catch (let error) {
             result = false
