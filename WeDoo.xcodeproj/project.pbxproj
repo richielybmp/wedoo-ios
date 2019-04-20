@@ -22,6 +22,7 @@
 		87D87D472253F01C00CB4C7C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D87D462253F01C00CB4C7C /* SignUpViewController.swift */; };
 		87D87D492253F1AF00CB4C7C /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D87D482253F1AF00CB4C7C /* SignInViewController.swift */; };
 		87DC2E7E225925BF007A2E3B /* NewToDooViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DC2E7D225925BF007A2E3B /* NewToDooViewController.swift */; };
+		87FBB57A226B52ED00E43980 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FBB579226B52ED00E43980 /* AboutViewController.swift */; };
 		AF03F6C522590F5C00EDEFA4 /* ToDooTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF03F6C422590F5C00EDEFA4 /* ToDooTableViewController.swift */; };
 		AF03F6C82259114900EDEFA4 /* WeDoo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AF03F6C62259114900EDEFA4 /* WeDoo.xcdatamodeld */; };
 		AF03F6CA225915A700EDEFA4 /* ToDooCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF03F6C9225915A700EDEFA4 /* ToDooCell.swift */; };
@@ -54,6 +55,7 @@
 		87D87D462253F01C00CB4C7C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		87D87D482253F1AF00CB4C7C /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		87DC2E7D225925BF007A2E3B /* NewToDooViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewToDooViewController.swift; sourceTree = "<group>"; };
+		87FBB579226B52ED00E43980 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		AF03F6C422590F5C00EDEFA4 /* ToDooTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDooTableViewController.swift; sourceTree = "<group>"; };
 		AF03F6C72259114900EDEFA4 /* WeDoo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WeDoo.xcdatamodel; sourceTree = "<group>"; };
 		AF03F6C9225915A700EDEFA4 /* ToDooCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDooCell.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				8780A2C7225274A7004F5484 /* Info.plist */,
 				8780A2CD2252772D004F5484 /* GoogleService-Info.plist */,
 				AF03F6C62259114900EDEFA4 /* WeDoo.xcdatamodeld */,
+				87FBB579226B52ED00E43980 /* AboutViewController.swift */,
 			);
 			path = WeDoo;
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 				87D87D472253F01C00CB4C7C /* SignUpViewController.swift in Sources */,
 				87D87D492253F1AF00CB4C7C /* SignInViewController.swift in Sources */,
 				8780A2BC225274A6004F5484 /* AppDelegate.swift in Sources */,
+				87FBB57A226B52ED00E43980 /* AboutViewController.swift in Sources */,
 				AF03F6CA225915A700EDEFA4 /* ToDooCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

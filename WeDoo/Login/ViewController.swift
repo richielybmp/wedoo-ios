@@ -30,6 +30,7 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         showSpinner(show:true)
         if let error = error {
             showAlert("didSignInFor Failed", "OK", error: error)
+            self.showSpinner(show:false)
             return
         }
         
