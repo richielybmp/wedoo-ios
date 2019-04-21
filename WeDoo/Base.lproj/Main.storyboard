@@ -1155,6 +1155,13 @@
                                     </mask>
                                 </variation>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zpi-IQ-3eJ">
+                                <rect key="frame" x="115" y="455" width="145" height="30"/>
+                                <state key="normal" title="Esqueci minha senha"/>
+                                <connections>
+                                    <segue destination="XwK-To-4NO" kind="show" id="SN9-wF-QPL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -1165,6 +1172,7 @@
                             <constraint firstItem="8qW-rE-cOt" firstAttribute="leading" secondItem="4ZX-jS-WZq" secondAttribute="leading" id="7re-1G-lYS"/>
                             <constraint firstItem="sZX-j6-jW7" firstAttribute="top" secondItem="uMf-4r-axF" secondAttribute="bottom" constant="5" id="9HX-l7-kYb"/>
                             <constraint firstItem="sZX-j6-jW7" firstAttribute="width" secondItem="uMf-4r-axF" secondAttribute="width" id="Au4-Xd-df4"/>
+                            <constraint firstItem="Zpi-IQ-3eJ" firstAttribute="top" secondItem="1iV-SO-iD8" secondAttribute="bottom" constant="15" id="D0T-sL-3oP"/>
                             <constraint firstItem="uMf-4r-axF" firstAttribute="leading" secondItem="4ZX-jS-WZq" secondAttribute="leading" constant="30" id="E80-SG-xSg"/>
                             <constraint firstItem="uMf-4r-axF" firstAttribute="top" secondItem="8qW-rE-cOt" secondAttribute="bottom" constant="30" id="FUM-vs-Muo"/>
                             <constraint firstItem="4ZX-jS-WZq" firstAttribute="trailing" secondItem="8qW-rE-cOt" secondAttribute="trailing" id="IK4-BY-HMu"/>
@@ -1174,6 +1182,7 @@
                             <constraint firstItem="uMf-4r-axF" firstAttribute="leading" secondItem="4ZX-jS-WZq" secondAttribute="leading" constant="50" id="SvK-T8-uak"/>
                             <constraint firstItem="uMf-4r-axF" firstAttribute="centerX" secondItem="8qW-rE-cOt" secondAttribute="centerX" id="Usj-Yc-bbS"/>
                             <constraint firstItem="1iV-SO-iD8" firstAttribute="width" secondItem="sZX-j6-jW7" secondAttribute="width" id="XYL-dW-cir"/>
+                            <constraint firstItem="Zpi-IQ-3eJ" firstAttribute="centerX" secondItem="1iV-SO-iD8" secondAttribute="centerX" id="YKM-Fv-5Uj"/>
                             <constraint firstItem="1iV-SO-iD8" firstAttribute="top" secondItem="sZX-j6-jW7" secondAttribute="bottom" constant="30" id="grk-2D-xie"/>
                             <constraint firstAttribute="trailing" secondItem="8qW-rE-cOt" secondAttribute="trailing" id="ixA-LY-OCe"/>
                             <constraint firstItem="uMf-4r-axF" firstAttribute="centerX" secondItem="8qW-rE-cOt" secondAttribute="centerX" id="n8K-Zd-K0Q"/>
@@ -1259,6 +1268,99 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F9S-hq-2Aj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1924" y="31"/>
+        </scene>
+        <!--Redefinir senha-->
+        <scene sceneID="sW9-0w-ZUZ">
+            <objects>
+                <viewController title="Redefinir senha" id="XwK-To-4NO" customClass="ForgotPasswordViewController" customModule="WeDoo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WYf-8B-79G">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GRu-3i-zCd">
+                                <rect key="frame" x="20" y="250.5" width="335" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TKP-df-Fau">
+                                <rect key="frame" x="20" y="295.5" width="335" height="45"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="9nO-NV-iYG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <state key="normal" title="Recuperar senha">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="9nO-NV-iYG"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="9nO-NV-iYG"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="actionSendRecoverEmail:" destination="XwK-To-4NO" eventType="touchUpInside" id="mNw-cO-U3Y"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Precisamos apenas que nos informe seu email já registrado para lhe enviar as intruções para redefinir sua senha." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="5" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W6h-FQ-hHB">
+                                <rect key="frame" x="20" y="120" width="335" height="105.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="W6h-FQ-hHB" firstAttribute="leading" secondItem="ScN-sy-keh" secondAttribute="leading" constant="20" id="6lp-QB-m1Z"/>
+                            <constraint firstItem="TKP-df-Fau" firstAttribute="width" secondItem="GRu-3i-zCd" secondAttribute="width" id="8cG-0C-GjW"/>
+                            <constraint firstAttribute="trailing" secondItem="W6h-FQ-hHB" secondAttribute="trailing" constant="20" id="9dg-Lt-64d"/>
+                            <constraint firstItem="ScN-sy-keh" firstAttribute="trailing" secondItem="GRu-3i-zCd" secondAttribute="trailing" constant="20" id="AUs-rz-wyH"/>
+                            <constraint firstItem="TKP-df-Fau" firstAttribute="top" secondItem="GRu-3i-zCd" secondAttribute="bottom" constant="15" id="JiY-ZJ-wjn"/>
+                            <constraint firstItem="GRu-3i-zCd" firstAttribute="leading" secondItem="ScN-sy-keh" secondAttribute="leading" constant="20" id="NQ7-nt-uT5"/>
+                            <constraint firstItem="TKP-df-Fau" firstAttribute="centerX" secondItem="GRu-3i-zCd" secondAttribute="centerX" id="ndo-qN-B7W"/>
+                            <constraint firstItem="GRu-3i-zCd" firstAttribute="top" secondItem="W6h-FQ-hHB" secondAttribute="bottom" constant="25" id="plW-Pq-5NA"/>
+                            <constraint firstItem="W6h-FQ-hHB" firstAttribute="top" secondItem="ScN-sy-keh" secondAttribute="top" constant="100" id="ykI-sK-uHu"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ScN-sy-keh"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="AUs-rz-wyH"/>
+                                <exclude reference="6lp-QB-m1Z"/>
+                                <exclude reference="9dg-Lt-64d"/>
+                                <exclude reference="ykI-sK-uHu"/>
+                                <exclude reference="NQ7-nt-uT5"/>
+                                <exclude reference="plW-Pq-5NA"/>
+                                <exclude reference="8cG-0C-GjW"/>
+                                <exclude reference="JiY-ZJ-wjn"/>
+                                <exclude reference="ndo-qN-B7W"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular">
+                            <mask key="constraints">
+                                <include reference="AUs-rz-wyH"/>
+                                <include reference="6lp-QB-m1Z"/>
+                                <include reference="9dg-Lt-64d"/>
+                                <include reference="ykI-sK-uHu"/>
+                                <include reference="NQ7-nt-uT5"/>
+                                <include reference="plW-Pq-5NA"/>
+                                <include reference="8cG-0C-GjW"/>
+                                <include reference="JiY-ZJ-wjn"/>
+                                <include reference="ndo-qN-B7W"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="tfEmail" destination="GRu-3i-zCd" id="ezV-ZT-lbu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7EC-SQ-v1I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2832" y="29"/>
         </scene>
         <!--ToDoo-->
         <scene sceneID="p3x-0t-DWW">
