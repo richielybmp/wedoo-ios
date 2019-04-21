@@ -6,6 +6,8 @@ Crie seções de listas como: listas de estudos, lista de compras, atividades di
 
 Cada ToDoo pode ser composto por vários itens (ToDooItem). Você poderá associar a descrição desse item, adicionar uma imagem/fotografia e marcar o item como concluído/finalizado com uma ação de swipe na célula da tabela.
 
+Assim, as pessoas podem se organizar no dia-a-dia, por exemplo, criando uma lista de assuntos para estudar ou até mesmo uma lista de compras de carnes, bebidas e derivados para aquele churrasco do final de samana com a galera.
+
 Para autenticação, utilizamos a plataforma do Firebase. 
 
 Para armazenamento dos dados, usamos o próprio CoreData, trabalhando com a manipulação dos dados de forma local com o Managed Object Context. Sabemos que isso é um ponto negativo pois caso o aplicativo for desinstalado do dispositivo, os dados serão perdidos. Para sanar esse problema, podemos migrar para o armazenamento em nuvem e utilizar o Firebase Database, vinculando os dados com o usuário autenticado.
