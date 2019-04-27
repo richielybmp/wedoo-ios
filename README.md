@@ -25,7 +25,7 @@ Para armazenamento dos dados, usamos o próprio CoreData, trabalhando com a mani
 * **[Mateus Stedler](https://github.com/mstedler)**.
 * **[Richiely Paiva](https://github.com/richielybmp)**.
 
-Veja também a lista dos [contribuidores](https://github.com/richielybmp/fea-eCommerce/graphs/contributors) que participaram desse projeto.
+Veja também a lista dos [contribuidores](https://github.com/richielybmp/wedoo-ios/graphs/contributors) que participaram desse projeto.
 
 ## Issues log, implementações futuras e pendentes
  - Migrar a forma de armazenamento atual (stores data only on device) para Firebase Database(cloud database);
